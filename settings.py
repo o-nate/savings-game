@@ -12,7 +12,7 @@ CONVERSION_FACTOR = 750
 SESSION_CONFIGS = [
     dict(
         name="complete",
-        display_name="The Savings Game",
+        display_name="The Savings Game (with instructions)",
         app_sequence=[
             "filler",
             "instructions",
@@ -23,7 +23,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name="savings_game",
-        display_name="The Savings Game (Standalone)",
+        display_name="The Savings Game (standalone)",
         app_sequence=[
             "filler",
             "savings_game",
@@ -38,15 +38,15 @@ SESSION_CONFIGS = [
         ],
         num_demo_participants=1,
     ),
-    dict(
-        name="session_results",
-        display_name="Session Results",
-        app_sequence=[
-            "filler",
-            "session_results",
-        ],
-        num_demo_participants=1,
-    ),
+    # dict(
+    #     name="session_results",
+    #     display_name="Session Results",
+    #     app_sequence=[
+    #         "filler",
+    #         "session_results",
+    #     ],
+    #     num_demo_participants=1,
+    # ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
