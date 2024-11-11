@@ -1,0 +1,44 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+<br>
+<i><span id="explanation_text"></span></i><br><br>
+<div id="confirm">
+	{{ if fr }}
+	Note : Le taux d'intérêt sur 12 mois est de 25 % (1,9 % par mois). Si vous
+	estimez que le taux d'inflation sur 12 mois est inférieur à 25 %, vous ne
+	devriez pas stocker.<br><br>
+
+	Êtes-vous convaincu que vous <span id="no_cost" class="do-not-show">n’avez
+		supporté <b>aucune</b> perte</span> <span id="yes_cost">avez bien
+		supporté des pertes</span> en raison d'un stockage trop tôt ?
+
+	{{ else }}
+	Note: The 12-month interest rate is 25% (1.9% per month). If you estimate
+	that the 12-month inflation rate is less than 25%, you should not stock
+	up.<br><br>
+	Are you convinced that you incurred <span id="no_cost"
+		class="do-not-show">no </span><span id="yes_cost"></span>cost due to
+	stocking too early?
+
+	{{ endif }}
+	{{ formfield 'confirm_early' }}
+</div>
+
+
+{{ next_button }}
+{{ endblock }}
+
+{{ block scripts }}
+<script src="{{ static 'show_info.js' }}"></script>
+{{ endblock }}

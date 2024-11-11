@@ -1,0 +1,85 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+{{ if fr }}
+
+<h2>Pourquoi ne faut-il pas stocker en phase d’inflation faible ?</h2>
+
+En période d’inflation <span style="color: #00960a"><b>plus faible</b></span>
+que le taux d’intérêt, acheter des aliments en avance que vous consommerez que
+plus tard vous fait perdre de l’argent.<br><br>
+
+Par exemple, supposez que vous ayez envie d’acheter 10.00 ₮ une unité que vous
+ne consommerez que 12 mois plus tard alors que l’inflation sur ces 12 mois sera
+de 1 % par mois. Au lieu d’acheter cette unité, il vaut mieux laisser cette
+somme sur votre compte épargne.<br><br>
+
+Au bout de 12 mois avec un taux d’intérêt de 1,9
+% par mois (soit 25% sur 12 mois), vous avez 12.50 ₮ sur votre compte épargne.
+Or, le prix des aliments n'a progressé que de 12,7 %. Le prix est donc de 11.27
+₮. Achetez l’unité à ce prix dans 12 mois vous permet de réaliser un gain de
+12.50 ₮ - 11.27 ₮ = 1.23 ₮ qui va continuer à vous rapporter des intérêts par la
+suite.<br><br>
+
+Pour vous donner une idée de l’évolution de votre épargne et des prix sur une
+longue durée:
+<p>• avec un <b>taux d’intérêt</b> à 1,9 % par mois, la somme placée double au
+	bout de <b>36 mois</b><br>
+	• avec un <b>taux d’inflation</b> à 1 % par mois, le prix double au bout de
+	<b>70 mois</b>
+</p>
+
+
+{{ else }}
+
+<h1>Why shouldn’t we stock up when inflation is low?</h1>
+When inflation is <span style="color: #00960a"><b>lower</b></span> than the
+interest rate, buying food in advance that you won’t consume until later costs
+you money.<br><br>
+
+For example, suppose you want to buy ₮10.00 a unit that you won’t consume until
+12 months later, when inflation over those 12 months will be 1% per month.
+Instead of buying this unit, it would be better to leave this sum in your
+savings account.<br><br>
+
+At the end of 12 months with an interest rate of 1.9% per month (i.e. 25% over
+12 months), you have ₮12.50 in your savings account. However, the price of food
+has only risen by 12.7%. The price is therefore ₮11.27. Buying the unit at this
+price in 12 months’ time gives you a gain of ₮12.50 - ₮11.27 = ₮1.23, which will
+continue to earn you interest for the remaining time.<br><br>
+
+To give you an idea of how your savings and prices will evolve over time:
+<p>• with <b>interest rate</b> of 1.9% per month, the sum invested doubles after
+	<b>36 months</b><br>
+	• with <b>inflation rate</b> of 1% per month, the price doubles after <b>70
+		months</b>
+</p>
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+
+{{ if fr }}
+
+Pensez-vous qu’une partie de votre perte de performance est due à avoir stocké
+trop tôt ?
+
+{{ else }}
+
+Do you think part of your performance loss is due to having stocked up too
+early?
+
+{{ endif }}
+
+{{ formfields }}
+{{ next_button }}
+
+{{ endblock }}

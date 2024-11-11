@@ -51,12 +51,18 @@ class Filler(Page):
     def before_next_page(player: Player, timeout_happened):
         player.participant.instructions = "control"
         print("Instructions treatment group:", player.participant.instructions)
+        player.participant.intervention = "treatment"
+        print("Intervention treatment group:", player.participant.intervention)
         player.participant.round = 1
         print("round:", player.participant.round)
         player.participant.task_results_1 = 1000
         print("task_results_1:", player.participant.task_results_1)
         player.participant.inflation = [1012, 430]
         print("inflation: ", player.participant.inflation)
+
+        ## Set errors for Experiment 2 interventions
+        errors_dict = {"early": 1, "late": 1, "excess": 0}
+        setattr(player.participant, f"errors_{player.participant.round}", errors_dict)
 
 
 page_sequence = [Filler]

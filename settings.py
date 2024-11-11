@@ -38,6 +38,15 @@ SESSION_CONFIGS = [
         ],
         num_demo_participants=1,
     ),
+    dict(
+        name="intervention_exp2_2",
+        display_name="Experiment 2: Intervention 2",
+        app_sequence=[
+            "filler",
+            "intervention_exp2_2",
+        ],
+        num_demo_participants=1,
+    ),
     # dict(
     #     name="session_results",
     #     display_name="Session Results",
@@ -78,6 +87,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 PARTICIPANT_FIELDS = [
     "instructions",
+    "intervention",
     "reaction_times",
     "periods_survived",
     "task_results",

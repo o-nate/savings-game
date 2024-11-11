@@ -1,0 +1,66 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+
+<h2>Petites erreurs, grosses pertes</h2>
+
+Les deux exemples précédents vous paraissent peut-être pas si importants en
+termes de pertes. Mais, en répétant ces erreurs, on peut accumuler des pertes
+importantes.<br><br>
+
+Maintenant, intéressons-nous à la troisième erreur possible : stocker trop
+d’aliments.<br><br>
+
+Cela se produit lorsque vous achetez plus d’unités d’aliments que nécessaire
+pour survivre jusqu'à la fin du jeu. Vous dépensez plus que nécessaire et
+sacrifiez les intérêts que cette épargne aurait pu rapporter.<br><br>
+
+Si vous êtes au <b>mois T</b>, le nombre total d’aliments dont vous aurez besoin
+pour survivre est de <b>121 - T</b>. Il est inutile et coûteux de stocker
+plus.<br><br>
+
+{{ else }}
+
+<h1>Small mistakes, big losses</h1>
+The previous two examples may not seem so important to you in terms of losses.
+But by repeating these mistakes, you can accumulate significant losses.<br><br>
+
+Now let’s look at the third possible mistake: stocking up too much.<br><br>
+
+This happens when you buy more units of food than you need to survive to the end
+of the game. You spend more than you need to and sacrifice the interest your
+savings could have earned.<br><br>
+
+If you’re in <b>month T</b>, the total amount of food you’ll need to survive is
+<b>121 - T</b>. It’s unnecessary and costly to stock up more.<br><br>
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+
+{{ if fr }}
+
+Pensez-vous qu’une partie de votre perte est due à un stock excessif ?
+
+{{ else }}
+
+Do you think part of your loss is due to stocking up too much?
+
+{{ endif }}
+
+{{ formfields }}
+
+{{ next_button }}
+
+{{ endblock }}

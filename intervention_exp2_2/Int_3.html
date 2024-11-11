@@ -1,0 +1,72 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+{{ if fr }}
+
+<h1>Comment identifier la phase d’inflation</h1>
+
+Identifier la phase d’inflation nécessite de faire attention à la variation du
+prix d’une unité d’aliments et de la comparer au taux d’intérêt.<br><br>
+
+Pour savoir si l’inflation est plus forte ou plus faible que le taux d’intérêt,
+il faut suivre l’évolution des prix. Si le prix du mois dernier était de 10.00 ₮
+et que le nouveau prix du mois actuel est de 10.10 ₮, alors le prix a augmenté
+de 1,0 %. L’inflation est <span style="color: #00960a"><b>plus
+		faible</b></span>. Il faut acheter seulement l’unité d’aliments
+nécessaire pour survivre. Si vous avez déjà un stock, pas la peine
+d’acheter.<br><br>
+
+Si le prix d’une unité d’aliments le mois dernier était de 10.00 ₮ et que le
+nouveau prix est de 10.30 ₮, alors le prix a augmenté de 3,0 %. L’inflation est
+<span style="color: #ff0000"><b>plus forte</b></span>. Vous devriez acheter plus
+d'une unité ("stocker").<br><br>
+
+{{ else }}
+
+<h1>How to identify the inflation phase</h1>
+To identify the inflation phase, you need to pay attention to the variation in
+the price of a unit of food and compare it with the interest rate.<br><br>
+
+To find out whether inflation is <span
+	style="color: #ff0000"><b>higher</b></span> or <span
+	style="color: #00960a"><b>lower</b></span> than the interest rate, we need
+to track price trends. If last month’s price was ₮10.00 and the new price for
+the current month is ₮10.10, then the price has risen by 1.0%. Inflation is
+lower. You need to buy only the unit of food you need to survive. If you already
+have a stock, don’t bother buying.<br><br>
+
+
+If the price of a unit of food last month was ₮10.00 and the new price is
+₮10.30, then the price has risen by 3.0%. Inflation is <span
+	style="color: #ff0000"><b>higher</b></span>. You should buy more than one
+unit (“stock up”).<br><br>
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+
+{{ if fr }}
+
+Si le prix d’une unité d’aliments est passé de 12.00 ₮ à 12.12 ₮, êtes-vous dans
+une période de ?
+
+{{ else }}
+
+If the price of {{ Lexicon.food }} has risen from {{ price_1 }} to {{
+price_2 }}, are you in a period of?
+
+{{ endif }}
+
+{{ formfield 'intro_1' }}
+
+{{ next_button }}
+
+{{ endblock }}
