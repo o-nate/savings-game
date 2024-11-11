@@ -1,0 +1,41 @@
+{{ block content }}
+
+{{ if fr }}
+
+<h1>Votre performance</h1>
+Prenons un moment pour réfléchir à votre performance. La performance maximum qui
+aurait pu être atteinte est de <b>{{ max_performance }}</b>. Le solde final de
+votre compte {{ Lexicon.savings_account }} était de <b>{{ performance }}</b>.
+<br><br>
+
+Vous avez gagné <b>{{ percent_max | to0 }}%</b> de la performance maximum.
+<br><br>
+
+Sur les pages suivantes, nous allons vous expliquer comment vous pouvez
+améliorer votre performance pour maximiser votre gain.<br><br>
+
+Nous vous poserons quelques questions pour vérifier votre compréhension des
+conseils fournis.<br><br>
+
+{{ else }}
+
+<h1>Tips to improve your performance</h1>
+We would like to take a moment to reflect on your performance. The maximum
+that could have been achieved was <b>{{ max_performance }}</b>. Your final {{
+Lexicon.savings_account }} balance was <b>{{ performance }}</b>.
+<br><br>
+You earned <b>{{ percent_max | to0 }}%</b> of the maximum.
+<br><br>
+
+On the following pages, we will explore how you can improve your performance to
+maximize your savings.<br><br>
+
+You must also answer some questions to confirm you understand the
+new information.<br><br>
+
+{{ endif }}
+
+{{ Lexicon.click_next }}<br><br>
+{{ next_button }}
+
+{{ endblock }}

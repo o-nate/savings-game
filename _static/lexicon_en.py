@@ -206,8 +206,8 @@ class Lexicon:
 
     task_int_q_do = "What should you do in the situation displayed below?"
 
-    task_int_high_inf = "Stronger inflation"
-    task_int_low_inf = "Weaker inflation"
+    task_int_high_inf = "High inflation"
+    task_int_low_inf = "Low inflation"
 
     task_int_explain = {
         "early": {

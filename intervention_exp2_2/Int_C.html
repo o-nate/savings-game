@@ -1,0 +1,23 @@
+{{ block title }}
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+
+Nous allons maintenant commencer le prochain tour du jeu. {{ Lexicon.click_next
+}}<br><br>
+
+{{ else }}
+
+We will now begin the next round of the game. {{ Lexicon.click_next }}<br><br>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}

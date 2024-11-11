@@ -1,0 +1,20 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+<p>Merci d'avoir prêté attention à cette analyse de performance. {{
+    Lexicon.click_next }}</p>
+
+{{ else }}
+<p>{{ Lexicon.task_int_test_completed }} {{ Lexicon.click_next }}</p>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}

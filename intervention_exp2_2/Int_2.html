@@ -1,0 +1,87 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+
+
+{{ if fr }}
+<h1>Les erreurs qui font baisser la performance</h1>
+La différence entre le gain maximum et votre gain vient de plusieurs types
+d’erreurs de décision d’achat pendant le jeu.<br><br>
+
+Votre perte de performance est au total de <b>{{ opportunity_cost
+	}}</b>.<br><br>
+
+Trois types d’erreurs peuvent se produire :
+<p>• Stocker des aliments trop tôt<br>
+	• Stocker des aliments trop peu ou tard<br>
+	• Stocker trop d’aliments</p>
+
+Nous allons d’abord considérer les deux premières.<br><br>
+
+Le taux d’intérêt est de {{ nominal_interest_rate }} % par mois. Si le prix des
+aliments augmente de moins de {{ nominal_interest_rate }} % chaque mois,
+l’inflation est <span style="color: #00960a"><b>plus faible</b></span> que le
+taux d’intérêt et dans ce cas il ne faut pas stocker, il faut acheter seulement
+l’unité d’aliments nécessaire pour survivre.<br><br>
+
+En effet, les intérêts accumulés sur votre compte d'épargne augmentent plus
+rapidement que le prix des aliments et vous gagnez plus à laisser fructifier
+votre argent sur votre compte épargne qu’à l’immobiliser dans un stock
+d’aliments. Constituer un stock d’aliments en période d’inflation plus faible
+que le taux d’intérêt, c’est ce que nous appelons <b>stocker trop
+	tôt</b>.<br><br>
+
+À l'inverse, lorsque l’inflation est <span style="color: #ff0000"><b>plus
+		forte</b></span> que le taux d’intérêt
+vous devriez stocker (acheter plus d'une unité d’aliments) car le prix des
+aliments augmente plus rapidement que les intérêts accumulés sur votre compte
+d'épargne. Ne pas stocker dans cette situation c’est ce que nous appelons
+<b>stocker trop peu ou tard</b>.<br>
+
+{{ else }}
+<h1>Mistakes that reduce performance</h1>
+The difference between the maximum amount and the amount you earned represents
+the <b>mistakes that reduce performance</b> during the game.<br><br>
+
+The difference between the maximum win and your win comes from several types of
+purchasing decision errors during the game. Your performance loss is {{
+opportunity_cost }}.<br><br>
+
+There are three mistakes that can occur:
+<p>• Stocking up too early<br>
+	• Stocking up too little or too late<br>
+	• Stocking up too much</p>
+
+We’ll consider the first two first.<br><br>
+
+The interest rate is {{ nominal_interest_rate }} % per month. If the price of
+food rises by less than {{ nominal_interest_rate }}each month, inflation is
+<span style="color: #00960a"><b>lower</b></span> than the interest rate, and in
+this case, you don’t need to stock up, you need to buy only the unit of food you
+need to survive. This is because the interest you accumulate in your savings
+account rises faster than the price of food, and you gain more by letting your
+money grow in your savings account than by tying it up in a food stock up.
+Stocking up on food when inflation is lower than the interest rate is what we
+call <b>stocking up too soon</b>.<br><br>
+
+Conversely, when the inflation rate is <span
+	style="color: #ff0000"><b>higher</b></span> than the interest rate, you
+should stock up (buy more than one unit of food) because the price of food rises
+faster than the interest accumulated in your savings account. Not stocking up in
+this situation is what we call <b>stocking up too little or too late</b>.<br>
+
+
+{{ endif }}
+
+<br>
+{{ next_button }}
+
+{{ endblock }}
