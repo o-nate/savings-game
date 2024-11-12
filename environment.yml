@@ -1,4 +1,4 @@
-name: the_savings_game
+name: savings_game
 channels:
   - conda-forge
   - defaults
@@ -32,4 +32,4 @@ dependencies:
     - websockets==10.1
     - wtforms==2.3.3
     - wtforms-sqlalchemy==0.2
-prefix: C:\Users\nlawrenc\anaconda3\envs\the_savings_game
+prefix: C:\Users\nlawrenc\anaconda3\envs\savings_game
