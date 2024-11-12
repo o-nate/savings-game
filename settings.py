@@ -12,12 +12,12 @@ CONVERSION_FACTOR = 750
 SESSION_CONFIGS = [
     dict(
         name="complete",
-        display_name="The Savings Game (with instructions)",
+        display_name="The Savings Game (with instructions and Intervention 2)",
         app_sequence=[
             "filler",
             "instructions",
             "savings_game",
-            "session_results",
+            "intervention_2",
         ],
         num_demo_participants=1,
     ),
@@ -34,6 +34,7 @@ SESSION_CONFIGS = [
         name="instructions",
         display_name="Instructions",
         app_sequence=[
+            "filler",
             "instructions",
         ],
         num_demo_participants=1,
@@ -126,7 +127,7 @@ PARTICIPANT_FIELDS = [
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = "fr"
+LANGUAGE_CODE = "en"
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = "₮"
