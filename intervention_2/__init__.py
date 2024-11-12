@@ -27,7 +27,7 @@ intervention = {"treat": False, "control": False}
 
 
 class C(BaseConstants):
-    NAME_IN_URL = "intervention_2_2"
+    NAME_IN_URL = "intervention_2"
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
     NUM_PAGES = 9
