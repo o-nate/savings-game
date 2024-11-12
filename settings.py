@@ -43,7 +43,7 @@ SESSION_CONFIGS = [
         display_name="Experiment 2, Intervention 2",
         app_sequence=[
             "filler",
-            "intervention_exp2_2",
+            "intervention_2",
         ],
         num_demo_participants=1,
     ),
