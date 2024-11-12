@@ -3,7 +3,7 @@
 ## Overview
 The Savings Game is an intertemporal savings and consumption behavioral economics task designed to measure how inflation impacts individuals' economic decision making. It is designed to integrate into online and laboratory-based behavioral experiments.
 
-The Savings Game operates on the [oTree framework](https://www.otree.org/), using Python, JavaScript, and HTML/CSS. For more information on how to use the `oTree` in python, the [official documentation](https://otree.readthedocs.io/en/latest/index.html).
+The Savings Game operates on the [oTree framework](https://www.otree.org/), using Python, JavaScript, and HTML/CSS. For more information on how to use oTree in python, the [official documentation](https://otree.readthedocs.io/en/latest/index.html).
 
 ## Installation
 To install and run the Savings Game locally, you will need to ensure to have the requesite dependencies (libraries, packages, etc.), including Python, oTree, and others.
