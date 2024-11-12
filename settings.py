@@ -39,6 +39,15 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
     ),
     dict(
+        name="intervention",
+        display_name="Experiment 1, Intervention",
+        app_sequence=[
+            "filler",
+            "intervention",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
         name="intervention_2",
         display_name="Experiment 2, Intervention 2",
         app_sequence=[

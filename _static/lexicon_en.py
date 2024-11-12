@@ -184,7 +184,7 @@ class Lexicon:
     # task_questions
     priceMemory = "What was the price in month"
 
-    # task_int
+    # Interventions
     task_int_test_completed = "Congratulations, you have passed the comprehension test. We will now play the game again."
     task_int_f_q1 = "Suppose you face the current situation below. In this month, what happens to your purchasing power?"
     task_int_f_q2 = "Can you afford more, less, or the same amount of Food as before?"
@@ -193,12 +193,9 @@ class Lexicon:
     task_int_f_q5 = "Suppose you face the current situation below. In this month, what happens to your purchasing power?"
     task_int_f_q6 = "Can you afford more, less, or the same amount of Food as before?"
 
-    task_int_cx_intro_1 = f"""The {inflation_rate} is related to:"""
-    task_int_cx_intro_1_rising_price = f"An increase in the price of {food}"
-    task_int_cx_intro_1_rising_interest = f"An increase in the {interest_rate}"
-
     task_int_intro_1 = f"""The {inflation_rate} is related to:"""
     task_int_intro_1_rising_price = f"An increase in the price of {food}"
+    task_int_intro_1_rising_salary = f"An increase in {salary}"
     task_int_intro_1_rising_interest = f"An increase in the {interest_rate}"
 
     task_int_q_qt = f""" Can you buy more, less, or the same amount of 

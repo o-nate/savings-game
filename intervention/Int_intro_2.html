@@ -1,0 +1,85 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block content }}
+<style>
+	p {
+		margin-left: 40px;
+		margin-right: 100px;
+	}
+</style>
+
+{{ if fr }}
+
+<h3>Maximiser le solde de votre {{ Lexicon.savings_account }}</h3>
+Pour maximiser le solde final de votre {{ Lexicon.savings_account }},
+vous devez adopter une stratégie visant à minimiser le coût des 121
+{{ Lexicon.units }} d'{{ Lexicon.food }} que vous devez acheter pendant
+le jeu.
+<br><br>
+
+<h3>{{ Lexicon.inflation_rate }}</h3>
+Dans le jeu, le <b>{{ Lexicon.inflation_rate }}</b> correspond à la hausse
+du prix des {{Lexicon.food}}. Selon vos prévisions d'inflation, il se peut
+que vous deviez anticiper vos achats pour ne pas payer vos {{Lexicon.food}}
+trop cher plus tard.<br><br>
+
+<h3>{{ Lexicon.interest_rate }}</h3>
+À la fin de chaque mois, le solde de votre {{Lexicon.savings_account}}
+augmente de {{ nominal_interest_rate }}% grâce au
+<b>{{Lexicon.interest_rate}}</b>. Cependant, si le
+{{Lexicon.inflation_rate}} du mois prochain est supérieur au
+{{Lexicon.interest_rate}}, vous pourrez acheter moins
+d'{{ Lexicon.food }} le mois prochain que maintenant.<br><br>
+
+{{ else }}
+
+<h3>Maximizing Your Final {{ Lexicon.savings_account }} Balance</h3>
+Maximizing the final balance of your {{ Lexicon.savings_account }} during
+the game
+requires a strategy of protecting the {{ Lexicon.purchasing_power }} of your
+{{ Lexicon.savings_account }}. Below, we explain how to protect your
+{{ Lexicon.savings_account }} {{ Lexicon.purchasing_power }} and how to
+use the information
+displayed on the game screen to do so.<br><br>
+
+<h3>{{ Lexicon.purchasing_power }}</h3>
+In the game, <b>{{ Lexicon.purchasing_power }}</b> refers to the amount of
+{{ Lexicon.food }} you can
+buy with your {{ Lexicon.total_cash }}. When the price of
+{{Lexicon.food}} increases, your
+{{ Lexicon.purchasing_power }} decreases. On the other hand, earning
+interest on
+your {{ Lexicon.savings_account }} increases the
+{{Lexicon.purchasing_power}} since you have
+more {{ Lexicon.total_cash }} and can buy more {{ Lexicon.food }} (price
+being equal).<br><br>
+
+<h3>{{ Lexicon.inflation_rate }}</h3>
+The percentage by which the price of {{ Lexicon.food }}
+changes is the <b>{{ Lexicon.inflation_rate }}</b>. If prices
+increase, this means the {{ Lexicon.inflation_rate }} is positive. When
+price
+increases accelerate — increasing by more and more each month —
+this is because the {{ Lexicon.inflation_rate }} is increasing.<br><br>
+
+<h3>{{ Lexicon.interest_rate }}</h3>
+At the end of each month, the balance in your {{ Lexicon.savings_account }}
+increases by {{ nominal_interest_rate }}%. This percentage is the
+<b>{{ Lexicon.interest_rate }}</b>. When the price of {{ Lexicon.food }}
+does
+not change, the {{ Lexicon.purchasing_power }} of your
+{{Lexicon.savings_account}}
+increases by {{ nominal_interest_rate }}%.<br><br>
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+{{ formfields }}
+
+{{ next_button }}
+
+{{ endblock }}
