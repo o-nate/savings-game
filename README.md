@@ -3,31 +3,32 @@
 ## Overview
 The Savings Game is an intertemporal savings and consumption behavioral economics task designed to measure how inflation impacts individuals' economic decision making. It is designed to integrate into online and laboratory-based behavioral experiments.
 
-The Savings Game operates on the [oTree framework](https://www.otree.org/), using Python, JavaScript, and HTML/CSS.
+The Savings Game operates on the [oTree framework](https://www.otree.org/), using Python, JavaScript, and HTML/CSS. For more information on how to use the `oTree` in python, the [official documentation](https://otree.readthedocs.io/en/latest/index.html).
 
 ## Installation
 To install and run the Savings Game locally, you will need to ensure to have the requesite dependencies (libraries, packages, etc.), including Python, oTree, and others.
+
 ### Using a virtual environment
 The simplest way to ensure you correctly install everything is by using a `conda` virtual environment. If you do not have Anaconda installed on your computer, install it first [here](https://www.anaconda.com/download).
 
 Once Anaconda is installed and you have cloned this project repository locally, open a terminal, either in your preferred code-editor (IDE) or directly from your desktop. Navigate to the repository's directory (i.e. folder) in the terminal and execute the following command.
 ```
-conda env create --name the_savings_game --file environment.yml
+conda env create --file environment.yml
 ```
 This will install all the required dependencies with the appropriate version simultaneously. It will also create a 'virtual environment,' which you must activate prior to running the Savings Game.
 
 After the virtual environment creation concludes, activate it by executing the command in the terminal.
 ```
-conda activate the_savings_game
+conda activate savings_game
 ```
-If succesfully activated, you should see `(the_savings_game)` appear to the left of the folder path in your terminal on the newest line. 
+If succesfully activated, you should see `(savings_game)` appear to the left of the folder path in your terminal on the newest line. 
 
 *Congratulations! You are now ready to run the Savings Game.*
 
 ## Running the Savings Game
 To run the Savings Game locally, open your terminal, either in your preferred code-editor (IDE) or directly from your desktop, and navigate to the repository's directory (i.e. folder) in the terminal. If you created a virtual environment, first activate it using the following command.
 ```
-conda activate the_savings_game
+conda activate savings_game
 ```
 
 Next, execute:
@@ -50,16 +51,27 @@ As describe further in the following sections, the Savings Game requires certain
 ## Apps
 ### The Savings Game
 `savings_game`
-The Savings Game code is separated into an `__init__.py`, which acts at the "backend" of the program. The "frontend", which provides the user interface and is what the subjects interact with is stored in the HTML files within `savings_game`. The inflation sequences are defined in `animal_spirits.csv` and the products available in `catalog.csv`. 
-
-### Instructions
-`instructions`
-
-### Results
-`session_results`
+The Savings Game code is separated into an `__init__.py`, which acts at the "backend" of the program. The "frontend", which provides the user interface and is what the subjects interact with is stored in the HTML files within `savings_game`. The inflation sequences are defined in `animal_spirits.csv` and the products available in `catalog.csv`. To define the inflation sequence, in the `filler` app, set: 
+```
+player.participant.inflation = [1012, 430]
+```
 
 ### Filler (For testing and debugging purposes only)
-`filler`
+The `filler` app is necessary for testing the apps as standalones. It adds values certain `participant_fields`.
+
+### Instructions
+The `instructions` app acts as a standalone to view the instructions for the Savings Game. Make sure to define the `player.participant.instructions` in `filler`.
+
+### Interventions
+There are three apps for the different interventions used in the first (`intervention`) and second (`intervention_1` and `intervention_2`) experiment. Make sure to define in `filler`:
+```
+player.participant.intervention = "treatment"
+```
+
+In `intervention_1` and `intervention_2`, if you would like to test new dynamic responses to different combinations of errors, adjust:
+```
+errors_dict = {"early": 1, "late": 1, "excess": 0}
+```
 
 ## Settings
 Setting can be defined in two places, either in the experiment-wide `SESSION_CONFIG_DEFAULTS` dictionary in `settings.py` or in the `C` class of the `__init__.py` file for a specific app. Settings defined in `SESSION_CONFIG_DEFAULTS` apply across all apps in the experiment. Settings defined in the `C` class of an app are app-specific.
