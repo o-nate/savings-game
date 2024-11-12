@@ -1,0 +1,47 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+{{ if fr }}
+
+<h1>Stocker trop tôt</h1>
+Cela se produit lorsque vous achetez plus d'une unité (stockez) pendant une
+période de <span style="color: #00960a"><b>faible inflation</b></span>.
+L’épargne utilisée pour constituer ce stock ne produit plus d’intérêt. Certes,
+vous évitez certaines augmentations de prix, mais les économies réalisées sont
+moins importantes que les intérêts que vous auriez pu accumuler.<br><br>
+
+{{ else }}
+
+<h1>Stocking too early</h1>
+This occurs when you buy more than one unit during <span
+	style="color: #00960a"><b>low inflation</b></span>. This lowers your savings
+account balance more than necessary. While you may avoid some price increase,
+you sacrifice more money to earn interest than you save.<br><br>
+
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+
+{{ if fr }}
+
+Pensez-vous qu’une partie de votre coût est due à un stock trop précoce ?
+
+{{ else }}
+
+Do you think any of your cost was due to stocking too early?
+
+{{ endif }}
+
+{{ formfields }}
+{{ next_button }}
+
+{{ endblock }}
