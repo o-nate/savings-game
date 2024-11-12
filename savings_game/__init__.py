@@ -630,8 +630,8 @@ class Failed(Page):
     def app_after_this_page(
         player: Type[Player], upcoming_apps: List[str]
     ) -> Union[str, None]:
-        "Directs subject to the results app, `session_results`"
-        return "session_results"
+        "Directs subject to the results app, `intervention_2`"
+        return "intervention_2"
 
     @staticmethod
     def vars_for_template(player: Type[Player]) -> Dict[str, Union[str, bool]]:
