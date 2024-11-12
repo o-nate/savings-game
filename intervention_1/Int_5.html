@@ -1,0 +1,48 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+{{ if fr }}
+
+<h1>Stocker trop peu ou trop tard</h1>
+Cela se produit si vous ne stockez pas suffisamment au début d’une période de
+<span style="color: #ff0000"><b>forte inflation</b></span>. Certes, vous pouvez
+accumuler plus d’intérêts mais les gains en intérêts sont moins importants que
+les pertes dues aux achats de nourriture réalisés trop tard à des prix trop
+élevés.<br><br>
+
+{{ else }}
+
+<h1>Not stocking enough</h1>
+This occurs when you do not buy enough units in the beginning of <span
+	style="color: #ff0000"><b>high inflation</b></span>. While you may maintain
+a higher balance to earn interest, you pay even more for Food than you earn in
+interest.<br><br>
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+
+{{ if fr }}
+
+Pensez-vous qu’une partie de votre coût est due à un stock insuffisant ou trop
+tardif ?
+
+{{ else }}
+
+Do you think any of your cost was due to not stocking enough?
+
+{{ endif }}
+
+{{ formfields }}
+
+{{ next_button }}
+
+{{ endblock }}

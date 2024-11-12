@@ -1,0 +1,66 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block content }}
+<style>
+	p {
+		margin-left: 40px;
+		margin-right: 100px;
+	}
+</style>
+{{ if fr }}
+
+<h3>La stratégie optimale</h3>
+Pour acheter au moindre coût et maximiser votre solde final, vous devez acheter
+<b>juste une {{ Lexicon.unit }}</b> d’{{ Lexicon.food }}
+par mois lorsque le <b>{{ Lexicon.interest_rate }}
+	est <span style="color: #00960a">supérieur</span> au {{
+	Lexicon.inflation_rate }}</b>.<br><br>
+Lorsque le <b>{{ Lexicon.interest_rate }} est <span style="color: #ff0000">
+		inférieur</span> au {{ Lexicon.inflation_rate }}</b>,
+vous devez constituer un {{Lexicon.stock}} afin de <b>ne pas avoir à
+	acheter les {{ Lexicon.food }} plus tard à un prix plus
+	élevé</b>.<br><br>
+
+<i>
+	La quantité que vous devez acheter doit vous permettre de constituer un
+	{{ Lexicon.stock }} égal au nombre de mois futurs pour lesquels vous
+	anticipez un {{ Lexicon.inflation_rate }} supérieur au
+	{{ Lexicon.interest_rate }}.
+</i><br><br>
+
+{{ else }}
+
+<h3>The Optimal Strategy</h3>
+To protect the {{ Lexicon.purchasing_power }} of your
+{{ Lexicon.savings_account }} and maximize its final balance, you must buy
+<b>only 1
+	{{ Lexicon.unit }}</b> of {{ Lexicon.food }} per month when the
+<b>{{ Lexicon.interest_rate }}
+	is <span style="color: #00960a">greater than</span> the {{
+	Lexicon.inflation_rate }}</b>.<br><br>
+When the <b>{{ Lexicon.interest_rate }} is <span style="color: #ff0000">less
+		than</span>
+	{{ Lexicon.inflation_rate }}</b>, you must <b>stock up</b> on {{
+Lexicon.food }}
+early so that you do not need to buy it at the higher price later.<br><br>
+
+Stocking up requires you buy a quantity of {{ Lexicon.food }} greater than 1
+as soon as the {{ Lexicon.inflation_rate}} becomes greater than the
+{{ Lexicon.interest_rate }}. The quantity you buy should be equal to the
+number of months you expect to lose {{ Lexicon.purchasing_power }}.<br><br>
+
+If you anticipate a period of <b>X months</b> of decreasing {{
+Lexicon.purchasing_power }},
+you should buy <b>X {{ Lexicon.units }}</b> of {{ Lexicon.food }} as
+soon as the
+{{ Lexicon.inflation_rate}} becomes greater than the {{
+Lexicon.interest_rate }}.<br><br>
+
+{{ endif }}
+{{ next_button }}
+
+{{ endblock }}

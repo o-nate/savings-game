@@ -39,11 +39,29 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
     ),
     dict(
-        name="intervention_exp2_2",
-        display_name="Experiment 2: Intervention 2",
+        name="intervention",
+        display_name="Experiment 1, Intervention",
         app_sequence=[
             "filler",
-            "intervention_exp2_2",
+            "intervention",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="intervention_1",
+        display_name="Experiment 2, Intervention 1",
+        app_sequence=[
+            "filler",
+            "intervention_1",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="intervention_2",
+        display_name="Experiment 2, Intervention 2",
+        app_sequence=[
+            "filler",
+            "intervention_2",
         ],
         num_demo_participants=1,
     ),
@@ -108,7 +126,7 @@ PARTICIPANT_FIELDS = [
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "fr"
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = "₮"

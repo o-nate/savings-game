@@ -1,0 +1,92 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+{{ if fr }}
+
+<h1>Timing</h1>
+Stocker au bon moment nécessite de mesurer la variation du prix d’une unité d’{{
+Lexicon.food }} et de la comparer au {{ Lexicon.interest_rate }}. Le
+{{ Lexicon.interest_rate }} est de {{ nominal_interest_rate }} %, si le prix
+d’{{ Lexicon.food }} augmente de plus de {{ nominal_interest_rate }} %
+(<span style="color: #ff0000"><b>forte inflation</b></span>), vous devriez
+stocker (acheter plus d'une unité d’{{ Lexicon.food }}). Cela est dû au fait
+que le prix d’{{ Lexicon.food }} augmente plus rapidement que les intérêts
+accumulés sur votre {{ Lexicon.savings_account }}. Sinon, vous vous trouvez
+en situation de <span style="color: #00960a"><b>faible inflation</b></span>, et
+les intérêts accumulés sur votre {{ Lexicon.savings_account }} augmentent
+plus rapidement que le prix d’{{ Lexicon.food }}.<br><br>
+
+
+Par exemple, si le prix d’une unité d’{{ Lexicon.food }} le mois dernier
+était de
+10.00 ₮ et que le nouveau prix est de 10.30 ₮, alors le prix a augmenté de 3,0
+%.
+C'est une <span style="color: #ff0000"><b>forte inflation</b></span>. Vous
+devriez acheter plus d'une unité ("stocker").<br><br>
+
+
+Mais, si le prix le mois dernier était de 10.00 ₮ et que le nouveau prix est de
+10.10 ₮, alors le prix a augmenté de 1,0 %. C'est une <span
+	style="color: #00960a"><b>faible inflation</b></span>. Vous devriez acheter
+une unité.<br><br>
+
+{{ else }}
+
+<h1>Timing</h1>
+Stocking up at the appropriate time requires recognizing when the price of {{
+Lexicon.food }}
+is changing by <span style="color: #00960a"><b>less</b></span> or <span
+	style="color: #ff0000"><b>more</b></span> than the interest earned. The
+interest rate is {{ nominal_interest_rate }}, so if the price of {{
+Lexicon.food }} increases by
+more than {{ nominal_interest_rate }}
+(<span style="color: #ff0000"><b>high inflation</b></span>), you should buy more
+than one unit of {{ Lexicon.food }}. This is because the price of {{
+Lexicon.food }} is increasing faster
+than your savings account is
+accruing interest. Otherwise, you are in <span style="color: #00960a"><b>low
+		inflation</b></span>, and your savings account is accruing faster than
+the price
+of {{ Lexicon.food }} is increasing.<br><br>
+
+
+For example, if the price last month was 10.00 ₮ and the new price is 10.30 ₮,
+then the price has increased by 3.0%. This is <span
+	style="color: #ff0000"><b>high inflation</b></span>. You should buy more
+than one unit (“stock up”).<br><br>
+
+
+But, if the price last month was 10.00 ₮ and the new price is 10.10 ₮, then the
+price has increased by 1.0%. This is <span style="color: #00960a"><b>low
+		inflation</b></span>. You should buy one unit.<br><br>
+
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+
+{{ if fr }}
+
+Si le prix d’une unité d’{{ Lexicon.food }} est passé de {{ price_1 }} à {{
+price_2 }}, êtes-vous dans une période de ?
+
+{{ else }}
+
+If the price of {{ Lexicon.food }} increased from {{ price_1 }} to {{
+price_2 }}, are you in high or low inflation?
+
+{{ endif }}
+
+{{ formfield 'intro_1' }}
+
+{{ next_button }}
+
+{{ endblock }}

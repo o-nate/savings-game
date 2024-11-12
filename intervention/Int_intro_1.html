@@ -1,0 +1,33 @@
+{{ block content }}
+
+{{ if fr }}
+
+<h1>Explication : La stratégie optimale</h1>
+Pour les deux tours restants du jeu, nous allons vous expliquer la stratégie
+optimale pour maximiser le solde final de votre
+{{ Lexicon.savings_account }}.
+<br><br>
+
+<h3>Questions de compréhension</h3>
+Vous devrez également répondre à certaines questions pour confirmer que vous
+comprenez les nouvelles informations qui vous sont données.<br><br>
+{{ Lexicon.click_next }}<br><br>
+
+{{ else }}
+
+<h1>Explanation: Optimal Strategy</h1>
+For the remaining two rounds of the game, we will explain the
+optimal strategy to
+maximize your final {{ Lexicon.savings_account }} balance.
+<br><br>
+
+<h3>Comprehension Questions</h3>
+You must also answer some questions to confirm you understand the
+new information.<br><br>
+{{ Lexicon.click_next }}<br><br>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}

@@ -227,9 +227,10 @@ class Lexicon:
     task_int_test_completed = """Félicitations, vous avez réussi le test de 
     compréhension. Nous allons maintenant commencer le jeu à nouveau."""
 
-    task_int_cx_intro_1 = f"""Le {inflation_rate} est déterminé par :"""
-    task_int_cx_intro_1_rising_price = f"La hausse du prix des {food}"
-    task_int_cx_intro_1_rising_interest = f"La hausse du {salary}"
+    task_int_intro_1 = f"""Le {inflation_rate} est déterminé par :"""
+    task_int_intro_1_rising_price = f"La hausse du prix des {food}"
+    task_int_intro_1_rising_interest = f"La hausse du {salary}"
+    task_int_intro_1_rising_salary = f"La hausse du {salary}"
 
     task_int_q_qt = f"""Pourrez-vous acheter plus, moins, ou la 
     même quantité d'{food} qu'avant ?"""

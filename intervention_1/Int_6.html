@@ -1,0 +1,48 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+
+{{ endblock }}
+
+
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'custom.css' }}">
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+
+<h1>Stocker trop</h1>
+Cela se produit lorsque vous achetez plus d’unités d’{{ Lexicon.food }} que
+nécessaire pour survivre jusqu'à la fin du jeu. Vous dépensez plus que
+nécessaire et sacrifiez les intérêts que cette épargne aurait pu
+rapporter.<br><br>
+
+{{ else }}
+
+<h1>Stocking too much</h1>
+This occurs when you buy more {{ Lexicon.food }} than necessary to survive
+until the end of the game. You spend more money than necessary and sacrifice
+interest that money could have earned.<br><br>
+
+
+{{ endif }}
+
+<h3>{{ Lexicon.comprehension }}</h3>
+
+{{ if fr }}
+
+Pensez-vous qu’une partie de votre coût est due à un stock excessif ?
+
+{{ else }}
+
+Do you think any of your opportunity cost was due to stocking too much?
+
+{{ endif }}
+
+{{ formfields }}
+
+{{ next_button }}
+
+{{ endblock }}
