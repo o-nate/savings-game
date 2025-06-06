@@ -4,6 +4,7 @@
 
 {{ endblock }}
 
+
 {{ block styles }}
 <link rel="stylesheet" href="{{ static 'custom.css' }}">
 {{ endblock }}
@@ -12,20 +13,25 @@
 
 <h3>{{ Lexicon.comprehension }}</h3>
 
-<span id="explanation_text"></span><br><br>
+<i><span id="explanation_text"></span></i><br><br>
+
 {{ if fr }}
+
 Êtes-vous convaincu que vous <span id="no_cost" class="do-not-show">n’avez
-	supporté <b>aucun</b> coût</span> <span id="yes_cost">avez bien
-	supporté des coûts</span> en raison d'un stock insuffisant ou trop
-tardif ?
+	supporté <b>aucune</b> perte</span> <span id="yes_cost">avez bien
+	supporté des pertes</span> en raison d’un stock excessif ?
+
 {{ else }}
+
 Are you convinced that you incurred <span id="no_cost"
 	class="do-not-show"><b>no</b> </span><span id="yes_cost"></span>cost due
-to not stocking enough?
+to stocking too much?
+
 {{ endif }}
-{{ formfield 'confirm_late' }}
+{{ formfield 'confirm_excess' }}
 
 {{ next_button }}
+
 
 {{ endblock }}
 

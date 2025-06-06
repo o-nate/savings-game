@@ -4,89 +4,129 @@
 
 {{ endblock }}
 
-{{ block styles }}
-<link rel="stylesheet" href="{{ static 'custom.css' }}">
-{{ endblock }}
-
 {{ block content }}
-{{ if fr }}
-
-<h1>Timing</h1>
-Stocker au bon moment nécessite de mesurer la variation du prix d’une unité d’{{
-Lexicon.food }} et de la comparer au {{ Lexicon.interest_rate }}. Le
-{{ Lexicon.interest_rate }} est de {{ nominal_interest_rate }} %, si le prix
-d’{{ Lexicon.food }} augmente de plus de {{ nominal_interest_rate }} %
-(<span style="color: #ff0000"><b>forte inflation</b></span>), vous devriez
-stocker (acheter plus d'une unité d’{{ Lexicon.food }}). Cela est dû au fait
-que le prix d’{{ Lexicon.food }} augmente plus rapidement que les intérêts
-accumulés sur votre {{ Lexicon.savings_account }}. Sinon, vous vous trouvez
-en situation de <span style="color: #00960a"><b>faible inflation</b></span>, et
-les intérêts accumulés sur votre {{ Lexicon.savings_account }} augmentent
-plus rapidement que le prix d’{{ Lexicon.food }}.<br><br>
-
-
-Par exemple, si le prix d’une unité d’{{ Lexicon.food }} le mois dernier
-était de
-10.00 ₮ et que le nouveau prix est de 10.30 ₮, alors le prix a augmenté de 3,0
-%.
-C'est une <span style="color: #ff0000"><b>forte inflation</b></span>. Vous
-devriez acheter plus d'une unité ("stocker").<br><br>
-
-
-Mais, si le prix le mois dernier était de 10.00 ₮ et que le nouveau prix est de
-10.10 ₮, alors le prix a augmenté de 1,0 %. C'est une <span
-	style="color: #00960a"><b>faible inflation</b></span>. Vous devriez acheter
-une unité.<br><br>
-
-{{ else }}
-
-<h1>Timing</h1>
-Stocking up at the appropriate time requires recognizing when the price of {{
-Lexicon.food }}
-is changing by <span style="color: #00960a"><b>less</b></span> or <span
-	style="color: #ff0000"><b>more</b></span> than the interest earned. The
-interest rate is {{ nominal_interest_rate }}, so if the price of {{
-Lexicon.food }} increases by
-more than {{ nominal_interest_rate }}
-(<span style="color: #ff0000"><b>high inflation</b></span>), you should buy more
-than one unit of {{ Lexicon.food }}. This is because the price of {{
-Lexicon.food }} is increasing faster
-than your savings account is
-accruing interest. Otherwise, you are in <span style="color: #00960a"><b>low
-		inflation</b></span>, and your savings account is accruing faster than
-the price
-of {{ Lexicon.food }} is increasing.<br><br>
-
-
-For example, if the price last month was 10.00 ₮ and the new price is 10.30 ₮,
-then the price has increased by 3.0%. This is <span
-	style="color: #ff0000"><b>high inflation</b></span>. You should buy more
-than one unit (“stock up”).<br><br>
-
-
-But, if the price last month was 10.00 ₮ and the new price is 10.10 ₮, then the
-price has increased by 1.0%. This is <span style="color: #00960a"><b>low
-		inflation</b></span>. You should buy one unit.<br><br>
-
-
-{{ endif }}
 
 <h3>{{ Lexicon.comprehension }}</h3>
 
+
+<br>
 {{ if fr }}
-
-Si le prix d’une unité d’{{ Lexicon.food }} est passé de {{ price_1 }} à {{
-price_2 }}, êtes-vous dans une période de ?
-
+Supposons que le <b>{{ Lexicon.interest_rate }} soit
+    <span style="color: #ff0000">
+        inférieur
+    </span> au {{ Lexicon.inflation_rate }}</b>.
 {{ else }}
-
-If the price of {{ Lexicon.food }} increased from {{ price_1 }} to {{
-price_2 }}, are you in high or low inflation?
-
+Suppose the <b>{{ Lexicon.interest_rate }} is <span style="color: #ff0000">
+        less than
+    </span> the {{ Lexicon.inflation_rate }}</b>.
 {{ endif }}
+<br>
+<br>
+{{ Lexicon.task_int_q_qt }}
 
-{{ formfield 'intro_1' }}
+{{ formfield 'q1' }}
+
+
+{{ Lexicon.task_int_q_do }}
+{{ formfield 'q2' }}
 
 {{ next_button }}
+
+<!-- CSS styles -->
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'task.css' }}">
+{{ endblock }}
+
+<h1>
+    {{ if fr }}
+    Mois 1 sur {{ C.NUM_PERIODS }}
+    {{ else }}
+    Month 1 of {{ C.NUM_PERIODS }}
+    {{ endif }}
+</h1>
+
+{{ extends 'global/Game_Dashboard.html' }}
+
+<br>
+<div class="break"></div>
+<div class="break"></div>
+<div class="break"></div>
+<div class="break"></div>
+<br>
+
+<div class="flex-container">
+
+    {{ extends 'global/Catalog.html' }}
+
+    <div class="flex-child-4">
+
+        {{ extends 'global/My_Cart.html' }}
+
+        <button class="btn btn-primary">
+            {{ Lexicon.finalize_purchase }} <b><span
+                    id="cart-total"></span></b>)
+        </button>
+
+        <script>
+
+            let myCart = document.getElementById('cart-body');
+            let myBalance = document.getElementById('cart-body2');
+            let cartTotal = document.getElementById('cart-total');
+            let cardInterestEarned = document.getElementById('interest-earned');
+            let cardCashOnHand = document.getElementById('total-cash');
+            let cardFinalSavings = document.getElementById('final-savings');
+            let cardFinalStock = document.getElementById('final-stock');
+            let cardNewPrice = document.getElementById('new-price');
+
+            function cu(amount) {
+                return `${amount} ₮`;
+            }
+
+            function liveRecv(data) {
+                let html = '';
+                for (let item of data.items) {
+                    html += `
+        <tr>
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td>${cu(item.total_price.toFixed(2))}</td>
+            <td><button type="button" value="${item.sku}" onclick="removeFromCart(this)" class="btn btn-secondary">-1</button></td>
+        </tr>`;
+                }
+                myCart.innerHTML = html;
+                cartTotal.innerText = cu(data.total_price.toFixed(2));
+                cardInterestEarned.innerText = cu(data.interestEarned.toFixed(2));
+                cardCashOnHand.innerText = cu(data.cashOnHand.toFixed(2));
+                cardFinalSavings.innerText = cu(data.finalSavings.toFixed(2));
+                // cardFinalStock.innerText = data.finalStock;
+                cardNewPrice.innerText = cu(data.newPrice.toFixed(2));
+
+            }
+
+        </script>
+    </div>
+</div>
+
+<br><br>
+
+<script>
+
+    function addToCart(ele) {
+        modifyCart(ele.value, 1);
+    }
+
+    function removeFromCart(ele) {
+        modifyCart(ele.value, -1);
+    }
+
+    function modifyCart(sku, delta) {
+        liveSend({ 'sku': sku, 'delta': delta });
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        liveSend({});
+    })
+
+</script>
 
 {{ endblock }}

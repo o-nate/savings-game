@@ -12,12 +12,12 @@ CONVERSION_FACTOR = 750
 SESSION_CONFIGS = [
     dict(
         name="complete",
-        display_name="The Savings Game (with instructions and Intervention 2)",
+        display_name="The Savings Game (with instructions and Intervention 3)",
         app_sequence=[
             "filler",
             "instructions",
             "savings_game",
-            "intervention_2",
+            "intervention_3",
         ],
         num_demo_participants=1,
     ),
@@ -40,17 +40,8 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
     ),
     dict(
-        name="intervention",
-        display_name="Experiment 1, Intervention",
-        app_sequence=[
-            "filler",
-            "intervention",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
         name="intervention_1",
-        display_name="Experiment 2, Intervention 1",
+        display_name="Intervention 1 (Experiment 1)",
         app_sequence=[
             "filler",
             "intervention_1",
@@ -59,10 +50,19 @@ SESSION_CONFIGS = [
     ),
     dict(
         name="intervention_2",
-        display_name="Experiment 2, Intervention 2",
+        display_name="Intervention 2 (Experiment 2)",
         app_sequence=[
             "filler",
             "intervention_2",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="intervention_3",
+        display_name="Intervention 3 (Experiment 2)",
+        app_sequence=[
+            "filler",
+            "intervention_3",
         ],
         num_demo_participants=1,
     ),

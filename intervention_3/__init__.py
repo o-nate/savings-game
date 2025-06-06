@@ -1,3 +1,4 @@
+import csv
 from decimal import *
 import random
 
@@ -21,9 +22,12 @@ else:
 which_language = {"en": False, "fr": False}  # noqa
 which_language[LANGUAGE_CODE[:2]] = True
 
+## Dict to pass whether participant receives intervention or control treatment
+intervention = {"treat": False, "control": False}
+
 
 class C(BaseConstants):
-    NAME_IN_URL = "task_int"
+    NAME_IN_URL = "intervention_3"
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
     NUM_PAGES = 9
@@ -155,6 +159,27 @@ def determine_error(player, error):
 
 
 # PAGES
+class Int_C(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.participant.intervention == "control"
+
+    @staticmethod
+    def app_after_this_page(player, upcoming_apps):
+        return "task"
+
+    # For progress bars
+    @staticmethod
+    def vars_for_template(player: Player):
+        return dict(
+            percentage=round(
+                C.NUM_PAGES / C.NUM_PAGES * 100,
+            ),
+            Lexicon=Lexicon,
+            **which_language,
+        )
+
+
 class Int_1(Page):
 
     @staticmethod
@@ -193,14 +218,14 @@ class Int_2(Page):
         before = 3 if inflation == 1012 else 30
         after = before + 3
         end = C.NUM_ROUNDS
-        errors_ = [
-            f"errors_{current_round}",
-            f"errors_{current_round}",
-            f"errors_{current_round}",
-        ]
-        ## Save finalStock at each benchmark month
-        for field, amount in zip(errors_, [before, after, end]):
-            print(amount, getattr(participant, field))
+        # errors_ = [
+        #     f"errors_{current_round}",
+        #     f"errors_{current_round}",
+        #     f"errors_{current_round}",
+        # ]
+        # ## Save finalStock at each benchmark month
+        # for field, amount in zip(errors_, [before, after, end]):
+        #     print(amount, getattr(participant, field))
         return dict(
             performance=cu(performance),
             max_performance=cu(max_performance),
@@ -209,7 +234,7 @@ class Int_2(Page):
             percentage=round(
                 1 / C.NUM_PAGES * 100,
             ),
-            nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
+            nominal_interest_rate=round((C.INTEREST_RATE), 2),
             Lexicon=Lexicon,
             **which_language,
         )
@@ -227,6 +252,7 @@ class Int_3(Page):
                 2 / C.NUM_PAGES * 100,
             ),
             nominal_interest_rate=round((C.INTEREST_RATE), 2),
+            annual_nominal_interest_rate=round((C.INTEREST_RATE * 12), 0),
             price_1=cu(C.PRICE_1),
             price_2=cu(C.PRICE_2),
             Lexicon=Lexicon,
@@ -260,16 +286,6 @@ class Int_3(Page):
 class Int_4(Page):
     form_model = "player"
     form_fields = ["q_early"]
-
-    @staticmethod
-    def js_vars(player):
-        """Send explanations based on whether error was committed"""
-        answer_options = determine_error(player, "early")
-        return dict(
-            cost_type="early",
-            explanations=Lexicon.task_int_explain["early"],
-            answer_options=answer_options,
-        )
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -515,6 +531,7 @@ class Results(Page):
 
 
 page_sequence = [
+    Int_C,
     Int_1,
     Int_2,
     Int_3,
