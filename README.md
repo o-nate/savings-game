@@ -63,12 +63,12 @@ The `filler` app is necessary for testing the apps as standalones. It defines ce
 The `instructions` app acts as a standalone to view the instructions for the Savings Game. Make sure to define the `player.participant.instructions` in `filler`.
 
 ### Interventions
-There are three apps for the different interventions used in the first (`intervention`) and second (`intervention_1` and `intervention_2`) experiment. Make sure to define in `filler`:
+There are three apps for the different interventions used in the first (`intervention_1`) and second (`intervention_2` and `intervention_3`) experiment. Make sure to define in `filler`:
 ```
 player.participant.intervention = "treatment"
 ```
 
-In `intervention_1` and `intervention_2`, if you would like to test new dynamic responses to different combinations of errors, adjust:
+In `intervention_2` and `intervention_3`, if you would like to test new dynamic responses to different combinations of errors, adjust the following values in the `before_next_page` function:
 ```
 errors_dict = {"early": 1, "late": 1, "excess": 0}
 ```

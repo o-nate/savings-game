@@ -5,21 +5,23 @@
 <h1>Votre performance</h1>
 Prenons un moment pour réfléchir à votre performance. La performance maximum qui
 aurait pu être atteinte est de <b>{{ max_performance }}</b>. Le solde final de
-votre compte {{ Lexicon.savings_account }} était de <b>{{ performance }}</b>.
+votre compte {{ Lexicon.savings_account }} était de <b>{{ performance
+    }}</b>.
+<br><br>
+Vous avez réussi de <b>{{ percent_max | to0 }}%</b> de la performance maximum.
 <br><br>
 
-Vous avez gagné <b>{{ percent_max | to0 }}%</b> de la performance maximum.
-<br><br>
+<h2>Améliorer votre performance</h2>
+Sur les pages suivantes, nous explorons comment vous pouvez améliorer votre
+performance pour maximiser votre gain.<br><br>
 
-Sur les pages suivantes, nous allons vous expliquer comment vous pouvez
-améliorer votre performance pour maximiser votre gain.<br><br>
-
-Nous vous poserons quelques questions pour vérifier votre compréhension des
-conseils fournis.<br><br>
+<h2>Questions de compréhension</h2>
+Vous devrez également répondre à quelques questions pour confirmer que vous
+comprenez les nouvelles informations.<br><br>
 
 {{ else }}
 
-<h1>Tips to improve your performance</h1>
+<h1>Your performance</h1>
 We would like to take a moment to reflect on your performance. The maximum
 that could have been achieved was <b>{{ max_performance }}</b>. Your final {{
 Lexicon.savings_account }} balance was <b>{{ performance }}</b>.
@@ -27,9 +29,11 @@ Lexicon.savings_account }} balance was <b>{{ performance }}</b>.
 You earned <b>{{ percent_max | to0 }}%</b> of the maximum.
 <br><br>
 
+<h2>Improve your performance</h2>
 On the following pages, we will explore how you can improve your performance to
 maximize your savings.<br><br>
 
+<h2>Comprehension questions</h2>
 You must also answer some questions to confirm you understand the
 new information.<br><br>
 

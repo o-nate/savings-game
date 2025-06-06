@@ -4,44 +4,129 @@
 
 {{ endblock }}
 
+{{ block content }}
+
+<h3>{{ Lexicon.comprehension}}</h3>
+
+
+<br>
+{{ if fr }}
+Supposons que le <b>{{ Lexicon.interest_rate }} soit
+    <span style="color: #00960a">
+        supérieur
+    </span> au {{ Lexicon.inflation_rate }}</b>.
+{{ else }}
+Suppose the <b>{{ Lexicon.interest_rate }} is <span style="color: #00960a">
+        greater than
+    </span> the {{ Lexicon.inflation_rate }}</b>.
+{{ endif }}
+<br>
+<br>
+{{ Lexicon.task_int_q_qt }}
+
+{{ formfield 'q3' }}
+
+
+{{ Lexicon.task_int_q_do }}
+{{ formfield 'q4' }}
+
+{{ next_button }}
+
+<!-- CSS styles -->
 {{ block styles }}
-<link rel="stylesheet" href="{{ static 'custom.css' }}">
+<link rel="stylesheet" href="{{ static 'task.css' }}">
 {{ endblock }}
 
-{{ block content }}
-{{ if fr }}
+<h1>
+    {{ if fr }}
+    Mois 1 sur {{ C.NUM_PERIODS }}
+    {{ else }}
+    Month 1 of {{ C.NUM_PERIODS }}
+    {{ endif }}
+</h1>
 
-<h1>Stocker trop tôt</h1>
-Cela se produit lorsque vous achetez plus d'une unité (stockez) pendant une
-période de <span style="color: #00960a"><b>faible inflation</b></span>.
-L’épargne utilisée pour constituer ce stock ne produit plus d’intérêt. Certes,
-vous évitez certaines augmentations de prix, mais les économies réalisées sont
-moins importantes que les intérêts que vous auriez pu accumuler.<br><br>
+{{ extends 'global/Game_Dashboard.html' }}
 
-{{ else }}
+<br>
+<div class="break"></div>
+<div class="break"></div>
+<div class="break"></div>
+<div class="break"></div>
+<br>
 
-<h1>Stocking too early</h1>
-This occurs when you buy more than one unit during <span
-	style="color: #00960a"><b>low inflation</b></span>. This lowers your savings
-account balance more than necessary. While you may avoid some price increase,
-you sacrifice more money to earn interest than you save.<br><br>
+<div class="flex-container">
 
+    {{ extends 'global/Catalog.html' }}
 
-{{ endif }}
+    <div class="flex-child-4">
 
-<h3>{{ Lexicon.comprehension }}</h3>
+        {{ extends 'global/My_Cart.html' }}
 
-{{ if fr }}
+        <button class="btn btn-primary">
+            {{ Lexicon.finalize_purchase }} <b><span
+                    id="cart-total"></span></b>)
+        </button>
 
-Pensez-vous qu’une partie de votre coût est due à un stock trop précoce ?
+        <script>
 
-{{ else }}
+            let myCart = document.getElementById('cart-body');
+            let myBalance = document.getElementById('cart-body2');
+            let cartTotal = document.getElementById('cart-total');
+            let cardInterestEarned = document.getElementById('interest-earned');
+            let cardCashOnHand = document.getElementById('total-cash');
+            let cardFinalSavings = document.getElementById('final-savings');
+            // let cardFinalStock = document.getElementById('final-stock');
+            let cardNewPrice = document.getElementById('new-price');
 
-Do you think any of your cost was due to stocking too early?
+            function cu(amount) {
+                return `${amount} ₮`;
+            }
 
-{{ endif }}
+            function liveRecv(data) {
+                let html = '';
+                for (let item of data.items) {
+                    html += `
+        <tr>
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td>${cu(item.total_price.toFixed(2))}</td>
+            <td><button type="button" value="${item.sku}" onclick="removeFromCart(this)" class="btn btn-secondary">-1</button></td>
+        </tr>`;
+                }
+                myCart.innerHTML = html;
+                cartTotal.innerText = cu(data.total_price.toFixed(2));
+                cardInterestEarned.innerText = cu(data.interestEarned.toFixed(2));
+                cardCashOnHand.innerText = cu(data.cashOnHand.toFixed(2));
+                cardFinalSavings.innerText = cu(data.finalSavings.toFixed(2));
+                // cardFinalStock.innerText = data.finalStock;
+                cardNewPrice.innerText = cu(data.newPrice.toFixed(2));
 
-{{ formfields }}
-{{ next_button }}
+            }
+
+        </script>
+    </div>
+</div>
+
+<br><br>
+
+<script>
+
+    function addToCart(ele) {
+        modifyCart(ele.value, 1);
+    }
+
+    function removeFromCart(ele) {
+        modifyCart(ele.value, -1);
+    }
+
+    function modifyCart(sku, delta) {
+        liveSend({ 'sku': sku, 'delta': delta });
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        liveSend({});
+    })
+
+</script>
 
 {{ endblock }}
