@@ -529,6 +529,12 @@ class Results(Page):
             **which_language,
         )
 
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        """Set participant value for Intervention 3 demo"""
+        player.participant.intervention_3 = True
+        print("Set intervention_3 for demo:", player.participant.intervention_3)
+
 
 page_sequence = [
     Int_C,

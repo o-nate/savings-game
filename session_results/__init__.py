@@ -1,7 +1,7 @@
 from ast import Num
-from typing import List, Dict, Union, Type
+from typing import Dict, Union, Type
 from otree.api import *
-from settings import SESSION_CONFIG_DEFAULTS, SESSION_CONFIGS, LANGUAGE_CODE
+from settings import SESSION_CONFIG_DEFAULTS, LANGUAGE_CODE
 
 author = "Nathaniel Lawrence, LEMMA, Université Panthéon-Assas"
 doc = """
@@ -27,9 +27,6 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
     NUM_QUESTIONS = 9 + 1
     CONVERSION_FACTOR = SESSION_CONFIG_DEFAULTS["conversion_factor"]
-    # CORRECT_ANSWER_FEE = cu(
-    #     SESSION_CONFIG_DEFAULTS["correct_answer_fee"] * CONVERSION_FACTOR
-    # )
 
 
 class Subsession(BaseSubsession):
@@ -45,6 +42,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     "Register players answers to questions"
+
     ## choices = [[value,label],[value,label]]
     q1 = models.IntegerField(
         label=Lexicon.session_results_q1,
@@ -97,19 +95,6 @@ def convert_to_euros(amount: float, rounding: int = 2) -> float:
 class Final_Results(Page):
     "shows final result of experiment"
 
-    # @staticmethod
-    # def js_vars(player: Player):
-    #     additional_remuneration = player.participant.remunerated_behavioral
-    #     additional_remuneration_euros = {
-    #         k: f"{convert_to_euros(v):.2f}" for k, v in additional_remuneration.items()
-    #     }
-    #     tasks = get_behavioral_task_names(player)
-    #     return dict(
-    #         tasks=tasks,
-    #         additional_remuneration=additional_remuneration,
-    #         additional_remuneration_euros=additional_remuneration_euros,
-    #     )
-
     @staticmethod
     def vars_for_template(player: Type[Player]) -> Dict[str, Union[str, bool]]:
         """Experiment's final results"""
@@ -128,14 +113,8 @@ class Final_Results(Page):
             remuneration_task / SESSION_CONFIG_DEFAULTS["conversion_factor"]
         )
 
-        # # Retrieve behavioral test results
-        # behavioral_remuneration = cu(get_behavioral_remuneration(player))
-        # behavioral_remuneration_euros = convert_to_euros(float(behavioral_remuneration))
-
         # Calculate total additional remuneration
-        additional_remuneration = float(
-            (remuneration_task)
-        )  # + behavioral_remuneration))
+        additional_remuneration = float((remuneration_task))
 
         # Calculate final remuneration
         final_remuneration = float(
@@ -164,6 +143,7 @@ class Final_Results(Page):
 
 class Feedback(Page):
     "Give feedback after pl yer answered all the questions"
+
     form_model = "player"
     form_fields = ["q1", "q2", "q3", "q5", "q6", "q4"]
 
@@ -180,4 +160,12 @@ class End(Page):
         return dict(Lexicon=Lexicon, **which_language)
 
 
-page_sequence = [Final_Results, Feedback, End]
+class Filler_End(Page):
+
+    @staticmethod
+    def is_displayed(player: Type[Player]) -> bool:
+        "Displayed if following Intervention 3"
+        return player.participant.intervention_3
+
+
+page_sequence = [Filler_End, Final_Results, Feedback, End]

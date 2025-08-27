@@ -18,6 +18,7 @@ SESSION_CONFIGS = [
             "instructions",
             "savings_game",
             "intervention_3",
+            "session_results",
         ],
         num_demo_participants=1,
     ),
@@ -27,6 +28,7 @@ SESSION_CONFIGS = [
         app_sequence=[
             "filler",
             "savings_game",
+            "session_results",
         ],
         num_demo_participants=1,
     ),
@@ -66,15 +68,6 @@ SESSION_CONFIGS = [
         ],
         num_demo_participants=1,
     ),
-    # dict(
-    #     name="session_results",
-    #     display_name="Session Results",
-    #     app_sequence=[
-    #         "filler",
-    #         "session_results",
-    #     ],
-    #     num_demo_participants=1,
-    # ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -123,6 +116,7 @@ PARTICIPANT_FIELDS = [
     "next_room",
     "err_msg",
     "vars_done",
+    "intervention_3",  # * For demo purposes
 ]
 
 # ISO-639 code

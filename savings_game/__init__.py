@@ -463,7 +463,10 @@ def determine_errors(player: Type[Player]) -> Dict[str, float]:
     """Identify which errors the subject committed"""
     end = C.NUM_ROUNDS
     errors = ["early", "late", "excess"]
-    early = average_early_stock(player)
+    try:
+        early = average_early_stock(player)
+    except:
+        early = 0
     late = calculate_late_stock(player)
     excess = player.in_round(end).final_stock
     return dict(zip(errors, [early, late, excess]))
@@ -630,8 +633,10 @@ class Failed(Page):
     def app_after_this_page(
         player: Type[Player], upcoming_apps: List[str]
     ) -> Union[str, None]:
-        "Directs subject to the results app, `intervention_3`"
-        return "intervention_3"
+        "Directs subject to the either results app or `intervention_3`"
+        print('player', player)
+        print('upcoming_apps', upcoming_apps)
+        return upcoming_apps[0]
 
     @staticmethod
     def vars_for_template(player: Type[Player]) -> Dict[str, Union[str, bool]]:
