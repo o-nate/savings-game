@@ -1,12 +1,7 @@
-from re import sub
+from typing import Type
+
 from otree.api import *
-from decimal import *
-from settings import (
-    SESSION_CONFIG_DEFAULTS,
-    SESSION_CONFIGS,
-    PARTICIPANT_FIELDS,
-    LANGUAGE_CODE,
-)
+from settings import LANGUAGE_CODE
 
 author = "Nathaniel Archer Lawrence"
 doc = """For debugging and testing:
@@ -49,6 +44,7 @@ class Filler(Page):
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
+        """Set participant values for demo purposes"""
         player.participant.instructions = "control"
         print("Instructions treatment group:", player.participant.instructions)
         player.participant.intervention = "treatment"
