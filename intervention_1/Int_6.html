@@ -72,48 +72,45 @@ will last the rest of the game.
             Finalize Purchase (Total : <b><span id="cart-total"></span></b>)
         </button>
 
-        <script>
-
-            let myCart = document.getElementById('cart-body');
-            let myBalance = document.getElementById('cart-body2');
-            let cartTotal = document.getElementById('cart-total');
-            let cardInterestEarned = document.getElementById('interest-earned');
-            let cardCashOnHand = document.getElementById('total-cash');
-            let cardFinalSavings = document.getElementById('final-savings');
-            // let cardFinalStock = document.getElementById('final-stock');
-            let cardNewPrice = document.getElementById('new-price');
-
-            function cu(amount) {
-                return `${amount} ₮`;
-            }
-
-            function liveRecv(data) {
-                let html = '';
-                for (let item of data.items) {
-                    html += `
-        <tr>
-            <td>${item.name}</td>
-            <td>${item.quantity}</td>
-            <td>${cu(item.total_price.toFixed(2))}</td>
-            <td><button type="button" value="${item.sku}" onclick="removeFromCart(this)" class="btn btn-secondary">-1</button></td>
-        </tr>`;
-                }
-                myCart.innerHTML = html;
-                cartTotal.innerText = cu(data.total_price.toFixed(2));
-                cardInterestEarned.innerText = cu(data.interestEarned.toFixed(2));
-                cardCashOnHand.innerText = cu(data.cashOnHand.toFixed(2));
-                cardFinalSavings.innerText = cu(data.finalSavings.toFixed(2));
-                // cardFinalStock.innerText = data.finalStock;
-                cardNewPrice.innerText = cu(data.newPrice.toFixed(2));
-
-            }
-
-        </script>
     </div>
 </div>
 
 <br><br>
 
+<script type="module">
+    import { cu } from "{{ static 'utils.js' }}";
+    window.cu = cu;
+</script>
+<script>
+    let myCart = document.getElementById('cart-body');
+    let myBalance = document.getElementById('cart-body2');
+    let cartTotal = document.getElementById('cart-total');
+    let cardInterestEarned = document.getElementById('interest-earned');
+    let cardCashOnHand = document.getElementById('total-cash');
+    let cardFinalSavings = document.getElementById('final-savings');
+    // let cardFinalStock = document.getElementById('final-stock');
+    let cardNewPrice = document.getElementById('new-price');
+    var is_fr = '{{ fr }}' === 'True';
+    function liveRecv(data) {
+        let html = '';
+        for (let item of data.items) {
+            html += `
+<tr>
+    <td>${item.name}</td>
+    <td>${item.quantity}</td>
+    <td>${cu(item.total_price.toFixed(2), is_fr)}</td>
+    <td><button type="button" value="${item.sku}" onclick="removeFromCart(this)" class="btn btn-secondary">-1</button></td>
+</tr>`;
+        }
+        myCart.innerHTML = html;
+        cartTotal.innerText = cu(data.total_price.toFixed(2), is_fr);
+        cardInterestEarned.innerText = cu(data.interestEarned.toFixed(2), is_fr);
+        cardCashOnHand.innerText = cu(data.cashOnHand.toFixed(2), is_fr);
+        cardFinalSavings.innerText = cu(data.finalSavings.toFixed(2), is_fr);
+        // cardFinalStock.innerText = data.finalStock;
+        cardNewPrice.innerText = cu(data.newPrice.toFixed(2), is_fr);
+    }
+</script>
 <script>
 
     function addToCart(ele) {

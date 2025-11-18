@@ -520,7 +520,7 @@ class MyPage(Page):
         if player.round_number > 1 and player.final_stock == 0:
             player.final_stock = player.in_round(player.round_number - 1).final_stock
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -572,6 +572,7 @@ class Survey2(Page):
 
 class Survey3(Page):
     "Qualitative inflation expectation question"
+
     form_model = "player"
     form_fields = ["qualitative_expectation"]
     timeout_seconds = C.TIME_LIMIT
@@ -595,6 +596,7 @@ class Survey3(Page):
 
 class Survey4(Page):
     "Asks subject their quantitative expectation of inflation in %"
+
     form_model = "player"
     form_fields = ["inf_expectation"]
     timeout_seconds = C.TIME_LIMIT
@@ -634,8 +636,8 @@ class Failed(Page):
         player: Type[Player], upcoming_apps: List[str]
     ) -> Union[str, None]:
         "Directs subject to the either results app or `intervention_3`"
-        print('player', player)
-        print('upcoming_apps', upcoming_apps)
+        print("player", player)
+        print("upcoming_apps", upcoming_apps)
         return upcoming_apps[0]
 
     @staticmethod

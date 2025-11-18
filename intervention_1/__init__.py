@@ -312,7 +312,7 @@ class Int_intro_2(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -354,7 +354,7 @@ class Int_intro_3(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -379,7 +379,7 @@ class Int_3(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -425,7 +425,7 @@ class Int_4(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -470,7 +470,7 @@ class Int_5(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -515,7 +515,7 @@ class Int_6(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,

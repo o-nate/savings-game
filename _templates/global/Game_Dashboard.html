@@ -80,7 +80,11 @@
             <div class="card-body">
                 <h6 class="card-title"><b>{{ Lexicon.salary }}</b></h6>
                 <p class="card-text">
-                    {{ income }}
+                    {{ if fr }}
+                    {{ income }} ₮
+                    {{ else }}
+                    ₮ {{ income }}
+                    {{ endif }}
                 </p>
             </div>
         </div>
