@@ -167,8 +167,8 @@ class Lexicon:
 
     q3 = f"Can the {interest_rate} change during the game?"
 
-    q4 = f"""Suppose a player had 100₮ in {savings_account} last month. 
-    If they earn 10₮ in interest and receive 20₮ in monthly salary, what will 
+    q4 = f"""Suppose a player had ₮100 in {savings_account} last month. 
+    If they earn ₮10 in interest and receive ₮20 in monthly salary, what will 
     their {total_cash} be?"""
 
     q11 = f"""Can the price of {food} change?"""

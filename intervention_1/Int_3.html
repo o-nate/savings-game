@@ -78,9 +78,7 @@ Suppose the <b>{{ Lexicon.interest_rate }} is <span style="color: #ff0000">
             let cardFinalStock = document.getElementById('final-stock');
             let cardNewPrice = document.getElementById('new-price');
 
-            function cu(amount) {
-                return `${amount} ₮`;
-            }
+            var is_fr = '{{ fr }}' === 'True';
 
             function liveRecv(data) {
                 let html = '';
@@ -89,12 +87,12 @@ Suppose the <b>{{ Lexicon.interest_rate }} is <span style="color: #ff0000">
         <tr>
             <td>${item.name}</td>
             <td>${item.quantity}</td>
-            <td>${cu(item.total_price.toFixed(2))}</td>
+            <td>${cu(item.total_price.toFixed(2), is_fr)}</td>
             <td><button type="button" value="${item.sku}" onclick="removeFromCart(this)" class="btn btn-secondary">-1</button></td>
         </tr>`;
                 }
                 myCart.innerHTML = html;
-                cartTotal.innerText = cu(data.total_price.toFixed(2));
+                cartTotal.innerText = cu(data.total_price.toFixed(2), is_fr);
                 cardInterestEarned.innerText = cu(data.interestEarned.toFixed(2));
                 cardCashOnHand.innerText = cu(data.cashOnHand.toFixed(2));
                 cardFinalSavings.innerText = cu(data.finalSavings.toFixed(2));
@@ -108,6 +106,16 @@ Suppose the <b>{{ Lexicon.interest_rate }} is <span style="color: #ff0000">
 </div>
 
 <br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<script type="module">
+    import { cu } from "{{ static 'utils.js' }}";
+    window.cu = cu;
+</script>
 
 <script>
 

@@ -64,7 +64,7 @@ class C(BaseConstants):
     # task constants
     NUM_PERIODS = SESSION_CONFIG_DEFAULTS["task_duration"]
     INITIAL_ENDOWMENT = cu(SESSION_CONFIG_DEFAULTS["initial_endowment"])
-    INCOME = cu(SESSION_CONFIG_DEFAULTS["income"])
+    INCOME = SESSION_CONFIG_DEFAULTS["income"]
     INTEREST_RATE = SESSION_CONFIG_DEFAULTS["interest_rate"]
     INTEREST_PERCENT = round(INTEREST_RATE * 100, 2)
     INTEREST_ROUNDED = round(INTEREST_RATE, 4)
@@ -101,6 +101,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     "Register players answers to questions"
+
     # Capture time it takes to complete the Instructions
     startTime = models.FloatField(initial=0)
     endTime = models.FloatField(initial=0)
@@ -293,6 +294,7 @@ def live_method(player: Type[Player], data) -> Dict[
 # PAGES
 class Instructions_1(Page):
     "Defines the page instructions 1"
+
     form_model = "player"
     form_fields = ["startTime"]
 
@@ -303,6 +305,7 @@ class Instructions_1(Page):
 
 class Instructions_2(Page):
     "Defines the page instructions 2"
+
     live_method = live_method
 
     @staticmethod
@@ -312,7 +315,7 @@ class Instructions_2(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -325,6 +328,7 @@ class Instructions_2(Page):
 
 class Instructions_3(Page):
     "Defines the page instructions 3"
+
     live_method = live_method
     form_model = "player"
     form_fields = ["q8"]
@@ -336,7 +340,7 @@ class Instructions_3(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -378,6 +382,7 @@ class Instructions_3(Page):
 
 class Instructions_4(Page):
     "Defines the page instructions 4"
+
     live_method = live_method
     form_model = "player"
     form_fields = ["q9"]
@@ -389,7 +394,7 @@ class Instructions_4(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -427,6 +432,7 @@ class Instructions_4(Page):
 
 class Instructions_5(Page):
     "Defines the page instructions 5"
+
     live_method = live_method
     form_model = "player"
     form_fields = ["q10"]
@@ -438,7 +444,7 @@ class Instructions_5(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -477,6 +483,7 @@ class Instructions_5(Page):
 
 class Instructions_6(Page):
     "Defines the page instructions 6"
+
     form_model = "player"
     form_fields = ["q1"]
 
@@ -487,7 +494,7 @@ class Instructions_6(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -520,6 +527,7 @@ class Instructions_6(Page):
 
 class Instructions_7(Page):
     "Defines the page instructions 7"
+
     form_model = "player"
     form_fields = ["q2"]
 
@@ -530,7 +538,7 @@ class Instructions_7(Page):
         interest_rate = {"real": C.REAL, "nominal": C.NOMINAL}
         task_int = {"int": C.INT}
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -563,6 +571,7 @@ class Instructions_7(Page):
 
 class Instructions_8(Page):
     "Defines the page instructions 8"
+
     live_method = live_method
     form_model = "player"
 
@@ -586,7 +595,7 @@ class Instructions_8(Page):
         else:
             instructions["control"] = True
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **instructions,
@@ -622,6 +631,7 @@ class Instructions_8(Page):
 
 class Instructions_9(Page):
     "Defines the page instructions 9"
+
     live_method = live_method
     form_model = "player"
     form_fields = ["q4"]
@@ -641,7 +651,7 @@ class Instructions_9(Page):
         # else:
         #     pass
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
@@ -671,6 +681,7 @@ class Instructions_9(Page):
 
 class Results(Page):
     "presents result of experiment"
+
     form_model = "player"
     form_fields = ["endTime"]
 
@@ -688,7 +699,7 @@ class Results(Page):
         # else:
         #     pass
         return dict(
-            income=cu(C.INCOME),
+            income=C.INCOME,
             **interest_rate,
             nominal_interest_rate=round((C.INTEREST_RATE * 100), 2),
             **task_int,
