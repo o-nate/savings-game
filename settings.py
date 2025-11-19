@@ -6,6 +6,12 @@ from dotenv import load_dotenv
 load_dotenv()
 SECRET = getenv("SECRET_KEY")
 
+# * Set to production mode if the environment variable is set
+if getenv("OTREE_PRODUCTION") not in {None, "", "0"}:
+    DEBUG = False
+else:
+    DEBUG = True
+
 # * Define conversion between experimental currency and payment currency
 CONVERSION_FACTOR = 750
 
@@ -94,7 +100,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     interest_rate=0.22773 / 12,
     monetary_policy=0,
     time_limit=60,
-    test_mode=True,  # !!!!!! Set to false before running the experiment
+    test_mode=True,  # ! Set to false before running the experiment
 )
 
 PARTICIPANT_FIELDS = [
@@ -134,4 +140,6 @@ ADMIN_PASSWORD = environ.get("OTREE_ADMIN_PASSWORD")
 
 DEMO_PAGE_INTRO_HTML = """ """
 
-SECRET_KEY = "3424529394207"
+SECRET_KEY = (
+    "3424529394207"  # ! You should normally set this in the environment variables
+)
