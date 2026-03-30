@@ -1,0 +1,36 @@
+{{ block title }}
+{{ Lexicon.instructions }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+<h3>Questionnaire</h3>
+Vous allez maintenant remplir un questionnaire. Certaines des questions vous
+interrogent sur vos comportements
+personnels. D'autres questions vous demandent de faire des estimations.<br><br>
+
+<h3>Limite de temps</h3>
+Toutes les questions qui vous demandent de faire une estimation ont une limite
+de temps. Vous aurez <b>{{ C.TIME_LIMIT }} secondes</b> pour taper vos
+réponses dans les champs et
+cliquer sur le bouton Suivant. Un message vous indiquera au préalable que le
+chronomètre va démarrer.<br><br><br>
+
+{{ else }}
+<h3>Questionnaire</h3>
+You will now complete a questionnaire. Some of the questions ask you about your
+own personal behaviors. Other questions
+ask you to make estimations.<br><br>
+
+<h3>Time limit</h3>
+All questions that ask you to make an estimation have a time limit. You will
+have <b>{{ C.TIME_LIMIT }} seconds</b> to type your responses on the fields and
+click the Next Button. You will be prompted beforehand that the timer will
+start.<br><br>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}

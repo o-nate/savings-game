@@ -1,0 +1,49 @@
+{{ block title }}
+{{ if fr }}
+Résultats
+
+{{ else }}
+Results
+
+{{ endif }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+<p>Voici la loterie qui a été choisie au hasard.</p>
+
+{{ else }}
+<p>Here is the row that was randomly chosen.</p>
+
+{{ endif }}
+
+{{ include Constants.table_template }}
+
+{{ if fr }}
+<p>
+    {{ if player.chose_safe }}
+    Vous avez choisi (et {{ if player.won_lottery }}gagné{{ else }}perdu{{ endif
+    }}) la petite loterie,
+    {{ else }}
+    Vous avez choisi (et {{ if player.won_lottery }}gagné{{ else }}perdu{{ endif
+    }}) la grande loterie, {{ endif }}
+    votre gain est donc de {{ result }} €.
+</p>
+
+{{ else }}
+<p>
+    {{ if player.chose_safe }}
+    You chose (and {{ if player.won_lottery }}won{{ else }}lost{{ endif }}) the
+    small lottery,
+    {{ else }}
+    You chose (and {{ if player.won_lottery }}won{{ else }}lost{{ endif }}) the
+    large lottery, {{ endif }}
+    so your payoff is €{{ result }}.
+</p>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}

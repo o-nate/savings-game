@@ -1,0 +1,21 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ for field in form }}
+<span id="{{ field.name }}"></span>
+{{ formfield field label=''}}
+<br>
+
+{{ endfor }}
+
+{{ next_button }}
+
+{{ endblock }}
+
+{{ block scripts }}
+<script src="{{ static 'getFollowUps.js' }}"></script>
+{{ endblock }}

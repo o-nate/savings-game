@@ -1,0 +1,25 @@
+{{ block content }}
+
+{{ if fr }}
+<h1>À venir : Questions chronométrées</h1>
+<i>
+    Les questions sur la page suivante vous demandent de fournir des
+    estimations. Vous avez {{ C.TIME_LIMIT }} secondes pour taper vos réponses
+    dans les champs et cliquer sur le bouton "Suivant" situé en dessous.
+</i>
+<br><br>
+
+{{ else }}
+<h1>Upcoming: Timed questions</h1>
+<i>
+    The following questions ask you to provide estimations.
+    There is one question per page. You have {{ C.TIME_LIMIT }} seconds to
+    select a response on the {{ Lexicon.slider }} and click the Next Button
+    below it.
+</i>
+<br><br>
+
+{{ endif }}
+{{ next_button }}
+
+{{ endblock }}

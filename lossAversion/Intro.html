@@ -1,0 +1,82 @@
+{{ block title }}
+{{ Lexicon.instructions }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+<h3>Tâche : Tirage à pile ou face</h3>
+Vous allez maintenant accomplir une tâche. Dans cette tâche, vous devez prendre
+une série de décisions concernant le fait de jouer à pile ou face ou non. Les
+décisions à prendre seront présentées dans un tableau.
+Chaque ligne du tableau présente un choix entre un tirage à pile ou face ou pas
+de tirage.<br><br>
+
+<h3>Rémunération</h3>
+Une ligne sera choisie de manière aléatoire, et le montant du paiement tiré de
+cette loterie sera ajouté à (ou soustrait de) votre rémunération.<br><br>
+
+<h3>Pratique</h3>
+Entraînez-vous à faire un choix en prenant la décision <b>de ne pas tirer à pile
+    ou face</b>.<br><br>
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>Lancer ou pas ?</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            Si la pièce tombe sur face, vous <b>perdez {{ Constants.LOSE }}</b>.
+            Si la pièce tombe sur pile, vous <b>gagnez {{ Constants.WIN }}</b>.
+        </td>
+        <td>
+            {{ for choice in form.practice }}
+            {{ choice }} {{ choice.label }}<br><br>
+            {{ endfor }}
+        </td>
+    </tr>
+</table>
+
+{{ else }}
+<h3>Task: Coin Toss</h3>
+You will now complete a task. In this task, you must make a series of decisions
+whether to gamble with a coin toss or not.
+The decisions will be presented in a table. Each row of the table presents a
+choice between two coin tosses.<br><br>
+
+<h3>Remuneration</h3>
+A random row will be chosen, and the payout amount drawn from that lottery will
+be added to (or subtracted from) your remuneration.<br><br>
+
+<h3>Practice</h3>
+Practice making a choice by selecting the decision to <b>not toss the
+    coin</b>.<br><br>
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>Toss coin or not?</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            If the coin turns up heads, then you <b>lose {{ Constants.LOSE
+                }}</b>. If the coin turns up tails, you <b>win {{ Constants.WIN
+                }}</b>.
+        </td>
+        <td>
+            {{ for choice in form.practice }}
+            {{ choice }} {{ choice.label }}<br><br>
+            {{ endfor }}
+        </td>
+    </tr>
+</table>
+
+{{ endif }}
+
+{{ formfield_errors 'practice' }}
+{{ next_button }}
+
+{{ endblock }}

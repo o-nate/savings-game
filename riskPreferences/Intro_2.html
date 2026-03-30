@@ -1,0 +1,13 @@
+{{ block content }}
+
+{{ if fr }}
+<p>C'est exact. {{ Lexicon.click_next }}</p>
+
+{{ else }}
+<p>That is correct. {{ Lexicon.click_next }}</p>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}

@@ -1,0 +1,75 @@
+{{ block title }}
+{{ Lexicon.instructions }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+<h3>Questionnaire : Préférences en termes de prime</h3>
+
+<p>
+    Vous allez maintenant répondre à un questionnaire. Nous voulons savoir
+    quelles sont vos préférences entre des primes hypothétiques immédiates et
+    différées. C'est-à-dire si vous préférez recevoir une certaine valeur
+    {{ Lexicon.timePreferences_sooner }} ou une autre valeur plus tard.
+    <br><br>
+
+    Nous allons vous présenter une série de décisions hypothétiques à prendre
+    entre deux primes à recevoir soit {{ Lexicon.timePreferences_sooner }},
+    soit au moment indiqué dans le futur. Les décisions à prendre seront
+    présentées dans un tableau. Pour chaque décision, vous devez indiquer
+    quelle option de prime vous préféreriez recevoir.<br>
+</p>
+
+<h3>Pratique</h3>
+
+<p>
+    Entraînez-vous à faire un choix en sélectionnant la prime de 20,00 € payée
+    <b>{{ Lexicon.timePreferences_sooner }}</b>.
+</p>
+{{ else }}
+<h3>Questionnaire : Bonus Payment Preferences</h3>
+
+<p>
+    You will now complete a questionnaire. We want to know your preferences
+    between hypothetical immediate and delayed bonuses. That is: whether you
+    would prefer to receive a given value
+    <b>{{ Lexicon.timePreferences_sooner }}</b> or another value
+    <b>later</b>.<br><br>
+
+    We will show you a series of hypothetical options between two
+    bonuses that you would either receive
+    {{ Lexicon.timePreferences_sooner }} or at the time in the future
+    indicated. The options will be presented in a table. You must indicate
+    which you would prefer receiving for each.<br>
+</p>
+
+<h3>Practice</h3>
+Practice making a choice by selecting the bonus of {{ C.PAYOUT_1 }} paid
+<b>{{ Lexicon.timePreferences_sooner }}</b>.
+<br><br>
+
+{{ endif }}
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>{{ Lexicon.timePreferences_sooner }}</th>
+        {{ if fr }}
+        <th>Dans {{ C.INTRO_DELAY }}</th>
+        {{ else }}
+        <th>In {{ C.INTRO_DELAY }}</th>
+        {{ endif }}
+    </tr>
+    <tr>
+        <th>{{ Lexicon.timePreferences_which }}</th>
+        {{ for choice in form.practice }}
+        <td>{{ choice.label }} {{ choice }}</td>
+        {{ endfor }}
+    </tr>
+</table>
+
+{{ formfield_errors 'practice' }}
+{{ next_button }}
+
+{{ endblock }}

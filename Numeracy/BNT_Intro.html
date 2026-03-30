@@ -1,0 +1,23 @@
+{{ block title }}
+{{ Lexicon.instructions }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+<h3>Questionnaire : Chance</h3>
+Vous allez maintenant remplir un questionnaire. Dans ce questionnaire, nous
+voulons comprendre comment vous traitez les
+questions relatives à la chance.<br><br>
+
+{{ else }}
+<h3>Questionnaire: Probability</h3>
+You will now complete a questionnaire. In this questionnaire, we want to
+understand how you handle questions relating to
+probability.<br><br>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}

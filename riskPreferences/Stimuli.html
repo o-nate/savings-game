@@ -1,0 +1,42 @@
+{{ block content }}
+
+{{ if fr }}
+<p>
+    Faîtes un choix pour chacune des rangées ci-dessous.
+    Une ligne sera choisie au hasard, et le montant tiré de cette loterie sera
+    ajouté à votre rémunération.
+</p>
+
+{{ else }}
+<p>
+    Make a choice for each of the below rows.
+    A random row will be chosen, and the amount drawn from that lottery will be
+    added to your remuneration.
+</p>
+
+{{ endif }}
+
+{{ include Constants.table_template }}
+
+<input type="hidden" name="raw_responses" id="raw_responses">
+
+<button type="button" class="btn btn-primary"
+    onclick="submitForm()">Next</button>
+
+<script>
+    function submitForm() {
+        let form = document.getElementById('form');
+        if (!form.reportValidity()) return;
+        let responses = {};
+        for (let radio of document.getElementsByClassName('radio-choice')) {
+            if (radio.checked) {
+                responses[radio.name] = radio.value === '1';
+            }
+        }
+        document.getElementById('raw_responses').value = JSON.stringify(responses);
+        form.submit();
+    }
+</script>
+
+
+{{ endblock }}

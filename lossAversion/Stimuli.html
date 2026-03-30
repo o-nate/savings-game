@@ -1,0 +1,41 @@
+{{ block content }}
+
+{{ if fr }}
+    <p>
+        Faîtes un choix pour chacune des rangées ci-dessous. 
+        Une ligne sera choisie au hasard, et le montant tiré de ce tirage sera ajouté à (ou soustrait de) votre rémunération 
+        au cas où vous auriez choisi lancer la pièce.
+    </p>
+
+{{ else }}
+    <p>
+        Make a choice for each of the below rows.
+        A random row will be chosen, and the payout amount drawn from that coin toss will be added to (or subtracted from) your remuneration 
+        if you decided to toss the coin in that instance.
+    </p>
+
+{{ endif }}
+
+
+{{ include Constants.table_template }}
+
+<input type="hidden" name="raw_responses" id="raw_responses">
+
+<button type="button" class="btn btn-primary" onclick="submitForm()">Next</button>
+
+<script>
+    function submitForm() {
+        let form = document.getElementById('form');
+        if (!form.reportValidity()) return;
+        let responses = {};
+        for (let radio of document.getElementsByClassName('radio-choice')) {
+            if (radio.checked) {
+                responses[radio.name] = radio.value === '1';
+            }
+        }
+        document.getElementById('raw_responses').value = JSON.stringify(responses);
+        form.submit();
+    }
+</script>
+
+{{ endblock }}

@@ -1,0 +1,25 @@
+{{ block content }}
+
+{{ if fr }}
+<h1>Questions chronométrées terminées</h1>
+<i>
+    Vous avez maintenant terminé les questions chronométrées. Les questions
+    suivantes ne sont pas limitées dans le temps. Vous serez prévenu avant toute
+    autre question chronométrée.
+</i>
+<br><br>
+
+{{ else }}
+<h1>Timed questions ended</h1>
+<i>
+    You have now completed the timed questions. The following questions do
+    not have a time limit. You will be prompted again before any other timed
+    questions.
+</i>
+<br><br>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}
