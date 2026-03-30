@@ -1,0 +1,27 @@
+[project]
+name = "savings-game"
+version = "0.1.0"
+description = "An experimental framework for measuring the impact of inflation on economic behavior and decision-making"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "aiofiles==0.6.0",
+    "click==7.1.2",
+    "h11==0.14.0",
+    "itsdangerous==1.1.0",
+    "markupsafe==1.1.1",
+    "otree==5.11.4",
+    "pip==24.0",
+    'psycopg2-binary>=2.8.4; sys_platform == "darwin"',
+    'psycopg2>=2.8.4; sys_platform != "darwin"',
+    "python-dotenv==1.0.1",
+    "python-multipart==0.0.5",
+    "setuptools==70.0.0",
+    "six==1.16.0",
+    "sqlalchemy==1.3.22",
+    "uvicorn==0.13.4",
+    "websockets==10.1",
+    "wheel==0.43.0",
+    "wtforms==2.3.3",
+    "wtforms-sqlalchemy==0.2",
+]
