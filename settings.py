@@ -74,6 +74,48 @@ SESSION_CONFIGS = [
         ],
         num_demo_participants=1,
     ),
+    dict(
+        name="lossAversion",
+        display_name="lossAversion",
+        app_sequence=["lossAversion"],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="riskPreferences",
+        display_name="riskPreferences",
+        app_sequence=["riskPreferences"],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="wisconsin",
+        display_name="wisconsin",
+        app_sequence=["wisconsin"],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="timePreferences",
+        display_name="timePreferences",
+        app_sequence=["timePreferences"],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Finance",
+        display_name="Finance",
+        app_sequence=["Finance"],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Inflation",
+        display_name="Inflation",
+        app_sequence=["Inflation"],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Numeracy",
+        display_name="Numeracy",
+        app_sequence=["Numeracy"],
+        num_demo_participants=1,
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -99,6 +141,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     income=4.32,
     interest_rate=0.22773 / 12,
     monetary_policy=0,
+    correct_answer_fee=0.0,
+    wisconsin_fee=50,
     time_limit=60,
     test_mode=True,  # ! Set to false before running the experiment
 )
@@ -123,11 +167,15 @@ PARTICIPANT_FIELDS = [
     "err_msg",
     "vars_done",
     "intervention_3",  # * For demo purposes
+    "lossAversion",
+    "riskPreferences",
+    "wisconsin",
+    "remunerated_behavioral",
 ]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "fr"
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = "₮"
