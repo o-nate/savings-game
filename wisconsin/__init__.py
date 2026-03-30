@@ -132,7 +132,7 @@ def live_method(player: Player, data):
         # layout changes each turn. otherwise, the user could just keep
         # clicking on the same box for the rest of the block.
         player.layout = random_layout()
-        feedback = "🙂" if is_correct else "☹"
+        feedback = "🙂" if is_correct else "☹️"
 
         response_time_base = (
             {} if player.response_time == "" else json.loads(player.response_time)
@@ -205,7 +205,7 @@ class Results(Page):
             num_correct=player.num_correct,
             reward=reward,
             Lexicon=Lexicon,
-            **which_language
+            **which_language,
         )
 
     @staticmethod
