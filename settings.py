@@ -18,102 +18,18 @@ CONVERSION_FACTOR = 750
 SESSION_CONFIGS = [
     dict(
         name="complete",
-        display_name="The Savings Game (with instructions and Intervention 3)",
+        display_name="The Savings Game",
         app_sequence=[
             "filler",
+            "wisconsin",
+            "riskPreferences",
+            "lossAversion",
+            "timePreferences",
             "instructions",
             "savings_game",
             "intervention_3",
             "session_results",
         ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="savings_game",
-        display_name="The Savings Game (standalone)",
-        app_sequence=[
-            "filler",
-            "savings_game",
-            "session_results",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="instructions",
-        display_name="Instructions",
-        app_sequence=[
-            "filler",
-            "instructions",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="intervention_1",
-        display_name="Intervention 1 (Experiment 1)",
-        app_sequence=[
-            "filler",
-            "intervention_1",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="intervention_2",
-        display_name="Intervention 2 (Experiment 2)",
-        app_sequence=[
-            "filler",
-            "intervention_2",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="intervention_3",
-        display_name="Intervention 3 (Experiment 2)",
-        app_sequence=[
-            "filler",
-            "intervention_3",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="lossAversion",
-        display_name="lossAversion",
-        app_sequence=["lossAversion"],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="riskPreferences",
-        display_name="riskPreferences",
-        app_sequence=["riskPreferences"],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="wisconsin",
-        display_name="wisconsin",
-        app_sequence=["wisconsin"],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="timePreferences",
-        display_name="timePreferences",
-        app_sequence=["timePreferences"],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="Finance",
-        display_name="Finance",
-        app_sequence=["Finance"],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="Inflation",
-        display_name="Inflation",
-        app_sequence=["Inflation"],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="Numeracy",
-        display_name="Numeracy",
-        app_sequence=["Numeracy"],
         num_demo_participants=1,
     ),
 ]

@@ -96,16 +96,27 @@ class Final_Results(Page):
     "shows final result of experiment"
 
     @staticmethod
+    def js_vars(player: Type[Player]) -> Dict[str, Union[str, bool, dict]]:
+        additional_remuneration = player.participant.remunerated_behavioral
+        additional_remuneration_euros = {
+            k: f"{convert_to_euros(v):.2f}" for k, v in additional_remuneration.items()
+        }
+        tasks = get_behavioral_task_names(player)
+        return dict(
+            tasks=tasks,
+            additional_remuneration=additional_remuneration,
+            additional_remuneration_euros=additional_remuneration_euros,
+        )
+
+    @staticmethod
     def vars_for_template(player: Type[Player]) -> Dict[str, Union[str, bool]]:
         """Experiment's final results"""
         participant = player.participant
 
         # Retrieve and sum each day's Savings Game result
         task_1 = cu(participant.task_results_1)
-        # task_2 = cu(participant.task_results_2)
         task_1_euros = convert_to_euros(task_1)
         print("tee type is", type(task_1_euros))
-        # task_2_euros = convert_to_euros(task_2)
         remuneration_task = 0
         for i in range(1, SESSION_CONFIG_DEFAULTS["exp_length_rounds"] + 1):
             remuneration_task += getattr(participant, f"task_results_{i}")
@@ -113,10 +124,11 @@ class Final_Results(Page):
             remuneration_task / SESSION_CONFIG_DEFAULTS["conversion_factor"]
         )
 
-        # Calculate total additional remuneration
-        additional_remuneration = float((remuneration_task))
+        behavioral_remuneration = cu(get_behavioral_remuneration(player))
+        behavioral_remuneration_euros = convert_to_euros(float(behavioral_remuneration))
 
-        # Calculate final remuneration
+        additional_remuneration = float((remuneration_task + behavioral_remuneration))
+
         final_remuneration = float(
             additional_remuneration + SESSION_CONFIG_DEFAULTS["participation_fee"]
         )
@@ -127,13 +139,11 @@ class Final_Results(Page):
 
         return dict(
             task_1=cu(task_1),
-            # task_2=cu(task_2),
             task_1_euros=task_1_euros,
-            # task_2_euros=task_2_euros,
             remuneration_task=cu(remuneration_task),
             remuneration_task_euros=remuneration_task_euros,
-            # behavioral_remuneration=behavioral_remuneration,
-            # behavioral_remuneration_euros=behavioral_remuneration_euros,
+            behavioral_remuneration=behavioral_remuneration,
+            behavioral_remuneration_euros=behavioral_remuneration_euros,
             final_remuneration=final_remuneration,
             final_remuneration_euros=final_remuneration_euros,
             Lexicon=Lexicon,

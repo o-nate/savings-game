@@ -43,6 +43,10 @@ class Player(BasePlayer):
 class Filler(Page):
 
     @staticmethod
+    def vars_for_template(player: Player) -> dict[str, str | bool]:
+        return dict(Lexicon=Lexicon, **which_language)
+
+    @staticmethod
     def before_next_page(player: Player, timeout_happened):
         """Set participant values for demo purposes"""
         player.participant.instructions = "control"
@@ -53,7 +57,7 @@ class Filler(Page):
         print("round:", player.participant.round)
         player.participant.task_results_1 = 1000
         print("task_results_1:", player.participant.task_results_1)
-        player.participant.inflation = [1012, 430]
+        player.participant.inflation = [430, 430]
         print("inflation: ", player.participant.inflation)
 
         ## Set errors for Experiment 2 interventions
