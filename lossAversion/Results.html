@@ -1,0 +1,45 @@
+{{ block title }}
+{{ if fr }}
+    Résultats
+
+{{ else }}
+    Results
+
+{{ endif }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+    <p>Voici la rangée qui a été choisie au hasard.</p>
+
+{{ else }}
+    <p>Here is the row that was randomly chosen.</p>
+
+{{ endif }}
+
+{{ include Constants.table_template }}
+
+{{ if fr }}
+    <p>
+        {{ if player.chose_toss }}
+        Vous avez choisi (et {{ if player.won_toss }}gagné{{ else }}perdu{{ endif }}) le tirage au sort,
+        {{ else }}
+        Vous n'avez pas lancé la pièce, {{ endif }}
+        donc votre gain est de {{ player.payoff }}.
+    </p>
+
+{{ else }}
+    <p>
+        {{ if player.chose_toss }}
+        You chose (and {{ if player.won_toss }}won{{ else }}lost{{ endif }}) the toss,
+        {{ else }}
+        You chose the sure payoff, {{ endif }}
+        so your payoff is {{ player.payoff }}.
+    </p>
+
+{{ endif }}
+
+    {{ next_button }}
+
+{{ endblock }}

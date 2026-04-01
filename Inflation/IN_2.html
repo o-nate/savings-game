@@ -1,0 +1,22 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+{{ endblock }}
+
+{{ block content }}
+<br>
+{{ formfield 'infCI_2' }}
+
+<button class="btn btn-primary" onclick="endTimer()" id="button">
+    {{Lexicon.next}}
+    <input type="hidden" name="responseTime_CI2" id="responseTime_CI2" />
+</button>
+
+{{ endblock }}
+
+{{ block scripts }}
+<script src="{{ static 'question_timer.js' }}"></script>
+<script>
+    time_response(js_vars.timed_question, 'button');
+</script>
+{{ endblock }}

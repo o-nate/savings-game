@@ -1,0 +1,29 @@
+{{ block title }}
+{{ if fr }}
+    Résultats
+
+{{ else }}
+    Results
+
+{{ endif }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+    Vous avez correctement réalisé {{ num_correct }} associations.
+
+    <p><i>Vous avez gagné {{ reward }} de rémunération supplémentaire.</i></p>
+
+{{ else }}
+    You correctly guessed {{ num_correct }} matches.
+
+    <p><i>You earned {{ reward }} in additional remuneration.</i></p>
+
+{{ endif }}
+
+    {{ next_button }}
+
+{{ endblock }}
+
+

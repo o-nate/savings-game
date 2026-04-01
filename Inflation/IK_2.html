@@ -1,0 +1,75 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+{{ endblock }}
+
+{{ block content }}
+
+<!-- CSS styles -->
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'sliders.css' }}">
+{{ endblock }}
+<br>
+
+{{ if fr }}
+<p>À votre connaissance, quel est le taux d'inflation annuel le <b>plus bas</b>
+    que la France a connu au cours des 30
+    dernières années ?</p>
+
+{{ else }}
+<p>To the best of your knowledge, what was the <b>lowest</b> annual rate of
+    inflation that France experienced during the
+    last 30 years?</p>
+
+{{ endif }}
+
+<br>
+
+<div id="sliders_here"></div>
+
+<script src="{{ static 'mgslider.js' }}"></script>
+
+<script>
+    $(document).ready(function (event) {
+        slider2 = new mgslider("infK_2", -100, 100, .1, `{{ Lexicon.slider_your_value }}`);
+        slider2.print(document.getElementById("sliders_here"));
+        slider2.yourvalue = "Your estimate";
+        slider2.f2s = function (val) {
+            return val.toFixed(1) + ' %';
+        }
+    });
+</script>
+
+{{ formfield_errors 'infK_2' }}
+
+<button class="btn btn-primary" onclick="endTimer()" id="button">
+    {{Lexicon.next}}
+    <input type="hidden" name="responseTime_K2" id="responseTime_K2" />
+</button>
+
+
+<script>
+    // TIMER
+    // This creates the variable that marks the start time
+    let pageTimerID = -1;
+
+    // This function automatically starts the timer when the page loads. 
+    window.onload = function () {
+        if (pageTimerID == -1) {
+            pageTimerID = (new Date()).getTime();
+            console.log(pageTimerID);
+        }
+    }
+
+    // Stop timer when next button clicked
+    function endTimer() {
+        // When finalize purchase clicked, current time recorded
+        let currentTime = (new Date()).getTime();
+        console.log(currentTime);
+        // Timer start time then subtracted from current time 
+        document.getElementById("responseTime_K2").value = currentTime - pageTimerID;
+        console.log(document.getElementById("responseTime_K2").value);
+    }
+</script>
+
+{{ endblock }}

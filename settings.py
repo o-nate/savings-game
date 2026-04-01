@@ -18,59 +18,17 @@ CONVERSION_FACTOR = 750
 SESSION_CONFIGS = [
     dict(
         name="complete",
-        display_name="The Savings Game (with instructions and Intervention 3)",
+        display_name="The Savings Game",
         app_sequence=[
             "filler",
+            "wisconsin",
+            "riskPreferences",
+            "lossAversion",
+            "timePreferences",
             "instructions",
             "savings_game",
             "intervention_3",
             "session_results",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="savings_game",
-        display_name="The Savings Game (standalone)",
-        app_sequence=[
-            "filler",
-            "savings_game",
-            "session_results",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="instructions",
-        display_name="Instructions",
-        app_sequence=[
-            "filler",
-            "instructions",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="intervention_1",
-        display_name="Intervention 1 (Experiment 1)",
-        app_sequence=[
-            "filler",
-            "intervention_1",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="intervention_2",
-        display_name="Intervention 2 (Experiment 2)",
-        app_sequence=[
-            "filler",
-            "intervention_2",
-        ],
-        num_demo_participants=1,
-    ),
-    dict(
-        name="intervention_3",
-        display_name="Intervention 3 (Experiment 2)",
-        app_sequence=[
-            "filler",
-            "intervention_3",
         ],
         num_demo_participants=1,
     ),
@@ -99,6 +57,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     income=4.32,
     interest_rate=0.22773 / 12,
     monetary_policy=0,
+    correct_answer_fee=0.0,
+    wisconsin_fee=50,
     time_limit=60,
     test_mode=True,  # ! Set to false before running the experiment
 )
@@ -123,11 +83,15 @@ PARTICIPANT_FIELDS = [
     "err_msg",
     "vars_done",
     "intervention_3",  # * For demo purposes
+    "lossAversion",
+    "riskPreferences",
+    "wisconsin",
+    "remunerated_behavioral",
 ]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "fr"
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = "₮"

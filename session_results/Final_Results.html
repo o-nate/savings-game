@@ -54,6 +54,27 @@ Experiment Fully Complete
         </tr>
     </tfoot>
 </table>
+Vous avez également gagné {{ behavioral_remuneration | to2 }}
+grâce à vos réponses correctes dans les autres tâches.<br><br>
+
+<table class="table table-striped" id="behavioral">
+    <thead>
+        <tr>
+            <th>Tâche</th>
+            <th>Résultat</th>
+            <th>Résultat en euro</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+        <tr class="total">
+            <td>Total</td>
+            <td>{{ behavioral_remuneration }}</td>
+            <td>{{behavioral_remuneration_euros}}€</td>
+        </tr>
+    </tfoot>
+</table>
 Au total en euro, vous avez gagné {{ final_remuneration_euros|to2 }} € pour
 votre participation à l'expérience, y compris votre
 indemnité forfaitaire de participation.<br><br>
@@ -67,7 +88,9 @@ passer aux pages finales.<br><br>
     <br><br>
     The total amount you will receive from the game is
     {{ remuneration_task }}.<br><br>
-    In total, you have earned ₮{{ final_remuneration | to2 }} for
+    You also earned {{ behavioral_remuneration }} as a result of
+    your correct responses in the other tasks and questionnaires.<br><br>
+    In total, you have earned {{ final_remuneration }} for
     your participation in the experiment, including your automatic
     participation fee.<br><br>
     Please, click the Next button below to proceed to the
@@ -84,6 +107,6 @@ passer aux pages finales.<br><br>
 <script src="{{static 'generateResultsTable.js'}}"></script>
 <script>
     // Function to generate table with results of additional remunerated tasks
-    createTable('additional_tasks')
+    createTable('behavioral')
 </script>
 {{ endblock }}

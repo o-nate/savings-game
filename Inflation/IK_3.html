@@ -1,0 +1,73 @@
+{{ block title }}
+
+{{ extends 'global/Progress_Bar.html' }}
+{{ endblock }}
+
+{{ block content }}
+
+<!-- CSS styles -->
+{{ block styles }}
+<link rel="stylesheet" href="{{ static 'sliders.css' }}">
+{{ endblock }}
+<br>
+
+{{ if fr }}
+<p>A votre connaissance, quel est le taux d'inflation que la France a connu au
+    cours des <b>douze derniers mois</b> ?
+</p>
+
+{{ else }}
+<p>To the best of your knowledge, what was the rate of inflation that France
+    experienced <b>over the past twelve months</b>?
+</p>
+
+{{ endif }}
+
+<div id="sliders_here"></div>
+
+<script src="{{ static 'mgslider.js' }}"></script>
+
+<script>
+    $(document).ready(function (event) {
+        slider1 = new mgslider("infK_3", -100, 100, .1, `{{ Lexicon.slider_your_value }}`);
+        slider1.print(document.getElementById("sliders_here"));
+        slider1.yourvalue = "Your estimate";
+        slider1.f2s = function (val) {
+            return val.toFixed(1) + ' %';
+        }
+    });
+</script>
+
+{{ formfield_errors 'infK_3' }}
+
+<button class="btn btn-primary" onclick="endTimer()" id="button">
+    {{Lexicon.next}}
+    <input type="hidden" name="responseTime_K3" id="responseTime_K3" />
+</button>
+
+
+<script>
+    // TIMER
+    // This creates the variable that marks the start time
+    let pageTimerID = -1;
+
+    // This function automatically starts the timer when the page loads. 
+    window.onload = function () {
+        if (pageTimerID == -1) {
+            pageTimerID = (new Date()).getTime();
+            console.log(pageTimerID);
+        }
+    }
+
+    // Stop timer when next button clicked
+    function endTimer() {
+        // When finalize purchase clicked, current time recorded
+        let currentTime = (new Date()).getTime();
+        console.log(currentTime);
+        // Timer start time then subtracted from current time 
+        document.getElementById("responseTime_K3").value = currentTime - pageTimerID;
+        console.log(document.getElementById("responseTime_K3").value);
+    }
+</script>
+
+{{ endblock }}

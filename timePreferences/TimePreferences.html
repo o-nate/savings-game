@@ -1,0 +1,25 @@
+{{ block title }}
+Round {{ player.round_number }} {{ if fr }} sur {{ else }} of {{ endif }}{{
+C.NUM_ROUNDS }}
+{{ endblock }}
+{{ block content }}
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>{{ Lexicon.timePreferences_sooner }}</th>
+        <th>{{ if fr }} Dans {{ else }} In {{ endif }} {{ delay }}</th>
+    </tr>
+    {{ for field in form }}
+    <tr>
+        <td>{{ Lexicon.timePreferences_which }}</td>
+        {{ for choice in field }}
+        <td>{{ choice.label }} {{ choice }}</td>
+        {{ endfor }}
+    </tr>
+    {{ endfor }}
+</table>
+
+{{ next_button }}
+
+{{ endblock }}

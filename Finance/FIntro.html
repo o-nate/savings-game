@@ -1,0 +1,23 @@
+{{ block title }}
+{{ Lexicon.instructions }}
+{{ endblock }}
+
+{{ block content }}
+
+{{ if fr }}
+<h3>Questionnaire : Vos choix financiers dans votre vie quotidienne</h3>
+Vous allez maintenant remplir un questionnaire. Dans ce questionnaire, nous
+voulons évaluer vos connaissances
+financières pratiques.<br><br>
+
+{{ else }}
+<h3>Questionnaire: Finance in Your Daily Life</h3>
+You will now complete a questionnaire. In this questionnaire, we want to
+understand how you make household financial
+decisions.<br><br>
+
+{{ endif }}
+
+{{ next_button }}
+
+{{ endblock }}
