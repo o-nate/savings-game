@@ -32,6 +32,62 @@ SESSION_CONFIGS = [
         ],
         num_demo_participants=1,
     ),
+    dict(
+        name="Numeracy",
+        display_name="Numeracy Test",
+        app_sequence=[
+            "Numeracy",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Finance",
+        display_name="Finance Test",
+        app_sequence=[
+            "Finance",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Inflation",
+        display_name="Inflation Test",
+        app_sequence=[
+            "Inflation",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Wisconsin",
+        display_name="Wisconsin Card Sorting Test",
+        app_sequence=[
+            "wisconsin",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Risk_Preferences",
+        display_name="Risk Preferences Test",
+        app_sequence=[
+            "riskPreferences",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Loss_Aversion",
+        display_name="Loss Aversion Test",
+        app_sequence=[
+            "lossAversion",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="Time_Preferences",
+        display_name="Time Preferences Test",
+        app_sequence=[
+            "timePreferences",
+        ],
+        num_demo_participants=1,
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
