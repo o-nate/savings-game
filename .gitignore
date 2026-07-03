@@ -13,3 +13,4 @@ __pycache__/
 *.otreezip
 .env
 settings.json
+.DS_Store

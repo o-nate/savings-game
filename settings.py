@@ -18,7 +18,7 @@ CONVERSION_FACTOR = 750
 SESSION_CONFIGS = [
     dict(
         name="complete",
-        display_name="The Savings Game",
+        display_name="Complete Experiment",
         app_sequence=[
             "filler",
             "wisconsin",
@@ -29,6 +29,22 @@ SESSION_CONFIGS = [
             "savings_game",
             "intervention_3",
             "session_results",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="savings_game",
+        display_name="Savings Game",
+        app_sequence=[
+            "savings_game",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="instructions",
+        display_name="Instructions",
+        app_sequence=[
+            "instructions",
         ],
         num_demo_participants=1,
     ),
