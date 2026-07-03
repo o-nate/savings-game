@@ -49,6 +49,33 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
     ),
     dict(
+        name="intervention_1",
+        display_name="Intervention 1",
+        app_sequence=[
+            "filler",
+            "intervention_1",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="intervention_2",
+        display_name="Intervention 2",
+        app_sequence=[
+            "filler",
+            "intervention_2",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name="intervention_3",
+        display_name="Intervention 3",
+        app_sequence=[
+            "filler",
+            "intervention_3",
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
         name="Numeracy",
         display_name="Numeracy Test",
         app_sequence=[
@@ -163,7 +190,7 @@ PARTICIPANT_FIELDS = [
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = "fr"
+LANGUAGE_CODE = "en"
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = "₮"
