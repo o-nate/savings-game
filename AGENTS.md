@@ -37,3 +37,21 @@ Session configs are defined in `settings.py`. There is only one runtime service.
   test suite (no `*/tests.py` oTree bot modules). `otree test <config>` will fail with
   `No module named '<app>.tests'` because none are defined. Validation is done by running
   the dev server and clicking through a demo session.
+
+### Companion repo: `savings-game-analysis/`
+- A second, separate repository (`github.com/o-nate/savings-game-analysis`, Python data
+  analysis) is cloned into `savings-game-analysis/` and is `.gitignore`d by this repo — it
+  has its own git history, so run `git` commands for it from inside that directory. It is
+  NOT auto-updated on VM startup; `git pull` it manually there if you need the latest.
+- It is also `uv`-managed (Python 3.10 via its own `.python-version`). Set up / refresh with
+  `uv sync` run from `savings-game-analysis/` (this also does the editable install so
+  `src`/`utils` imports resolve). The startup update script refreshes it automatically when
+  the directory is present.
+- Running the analysis scripts/tests end-to-end requires user-supplied inputs that are NOT
+  in the repo: (1) experiment data files under `savings-game-analysis/data/` (that dir is
+  gitignored/empty), and (2) a `.env` with JSON env vars `LABELS` and `EXP_1_LABELS`.
+  Without them, importing modules like `src.preprocess` fails early (e.g. `LABELS` is
+  `None`). The `tests/` files are plain scripts that run module-level `assert`s at import
+  (not pytest/unittest) and depend on that data/config. The environment install itself is
+  verified by importing the editable package + core deps (`pandas`, `numpy`, `statsmodels`,
+  `duckdb`, `pingouin`, `seaborn`, `sklearn`).
